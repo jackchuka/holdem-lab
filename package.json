@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
-    "@vite-pwa/assets-generator": "^1.0.4",
+    "@vite-pwa/assets-generator": "^2.0.0",
     "oxlint": "^1.86.0",
     "oxlint-tsgolint": "7.0.2003",
     "typescript": "^7.0.2",
