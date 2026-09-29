@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import type { Locale } from '@holdem-lab/quiz';
 import type { RangeSet } from '@holdem-lab/ranges';
 import { useI18n } from '../i18n/i18n';
@@ -25,6 +25,40 @@ type Props = {
   onImported: () => void;
 };
 
+function Group({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section>
+      <h2 className="group-title">{title}</h2>
+      <div className="settings-group">{children}</div>
+    </section>
+  );
+}
+
+function ChipRow<T extends string | number>({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: { value: T; label: string }[];
+  value: T;
+  onChange: (v: T) => void;
+}) {
+  return (
+    <div className="row">
+      <span>{label}</span>
+      <div className="chips">
+        {options.map((o) => (
+          <button key={o.value} className="chip" aria-pressed={value === o.value} onClick={() => onChange(o.value)}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function SettingsScreen({ store, settings, rangeSet, onSettings, onImported }: Props) {
   const { t } = useI18n();
   const [message, setMessage] = useState<string | null>(null);
@@ -48,80 +82,108 @@ export function SettingsScreen({ store, settings, rangeSet, onSettings, onImport
     }
   };
 
+  const reset = async (kind: 'stats' | 'all') => {
+    if (!window.confirm(t(kind === 'stats' ? 'settings.resetStatsConfirm' : 'settings.resetAllConfirm'))) return;
+    try {
+      await (kind === 'stats' ? store.clearHistory() : store.clearProgress());
+      setMessage(t('settings.resetDone'));
+    } catch (e) {
+      setMessage((e as Error).message);
+    }
+  };
+
   return (
     <section className="app-main">
       <h1 className="title">{t('settings.title')}</h1>
-      <label className="row">
-        <span>{t('settings.language')}</span>
-        <select value={settings.locale} onChange={(e) => onSettings({ ...settings, locale: e.target.value as Locale })}>
-          {LANGUAGES.map((l) => (
-            <option key={l.locale} value={l.locale}>
-              {l.label}
-            </option>
-          ))}
-        </select>
-      </label>
-      <div className="label">{t('settings.theme')}</div>
-      <div className="swatches">
-        {THEMES.map((th) => (
-          <button
-            key={th.name}
-            className="swatch"
-            aria-pressed={settings.theme === th.name}
-            style={{ background: th.background, color: th.color }}
-            onClick={() => onSettings({ ...settings, theme: th.name })}
-          >
-            {t(`theme.${th.name}`)}
-          </button>
-        ))}
-      </div>
-      <label className="row">
-        <span>{t('settings.fourColor')}</span>
-        <input type="checkbox" checked={settings.fourColor} onChange={(e) => onSettings({ ...settings, fourColor: e.target.checked })} />
-      </label>
-      <label className="row">
-        <span>{t('settings.newPerDay')}</span>
-        <select value={settings.newPerDay} onChange={(e) => onSettings({ ...settings, newPerDay: Number(e.target.value) })}>
-          {[10, 20, 30, 50].map((n) => (
-            <option key={n} value={n}>
-              {n}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="row">
-        <span>{t('settings.tolerance')}</span>
-        <select value={settings.tolerance} onChange={(e) => onSettings({ ...settings, tolerance: Number(e.target.value) })}>
-          {[3, 5, 10].map((n) => (
-            <option key={n} value={n}>
-              ±{n}%
-            </option>
-          ))}
-        </select>
-      </label>
-      <div className="row">
-        <span>{t('settings.rangeSet')}</span>
-        <span>{rangeSet?.name ?? t('settings.rangeMissing')}</span>
-      </div>
-      <button className="row row-button" onClick={exportData}>
-        <span>{t('settings.export')}</span>
-        <span>›</span>
-      </button>
-      <label className="row row-button">
-        <span>{t('settings.import')}</span>
-        <span>›</span>
-        <input
-          type="file"
-          accept="application/json"
-          hidden
-          onChange={(e) => {
-            const f = e.target.files?.[0];
-            if (f) void importData(f);
-            e.target.value = '';
-          }}
+
+      <Group title={t('settings.display')}>
+        <ChipRow
+          label={t('settings.language')}
+          options={LANGUAGES.map((l) => ({ value: l.locale, label: l.label }))}
+          value={settings.locale}
+          onChange={(locale) => onSettings({ ...settings, locale })}
         />
-      </label>
-      {message && <div className="label">{message}</div>}
+        <div className="row row-stack">
+          <span>{t('settings.theme')}</span>
+          <div className="swatches">
+            {THEMES.map((th) => (
+              <button
+                key={th.name}
+                className="swatch"
+                aria-pressed={settings.theme === th.name}
+                style={{ background: th.background, color: th.color }}
+                onClick={() => onSettings({ ...settings, theme: th.name })}
+              >
+                {t(`theme.${th.name}`)}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="row">
+          <span>{t('settings.fourColor')}</span>
+          <button
+            className="switch"
+            role="switch"
+            aria-checked={settings.fourColor}
+            aria-label={t('settings.fourColor')}
+            onClick={() => onSettings({ ...settings, fourColor: !settings.fourColor })}
+          />
+        </div>
+      </Group>
+
+      <Group title={t('settings.study')}>
+        <ChipRow
+          label={t('settings.newPerDay')}
+          options={[10, 20, 30, 50].map((n) => ({ value: n, label: String(n) }))}
+          value={settings.newPerDay}
+          onChange={(newPerDay) => onSettings({ ...settings, newPerDay })}
+        />
+        <ChipRow
+          label={t('settings.tolerance')}
+          options={[3, 5, 10].map((n) => ({ value: n, label: `±${n}%` }))}
+          value={settings.tolerance}
+          onChange={(tolerance) => onSettings({ ...settings, tolerance })}
+        />
+        <div className="row">
+          <span>{t('settings.rangeSet')}</span>
+          <span className="muted">{rangeSet?.name ?? t('settings.rangeMissing')}</span>
+        </div>
+      </Group>
+
+      <Group title={t('settings.data')}>
+        <button className="row row-button" onClick={exportData}>
+          <span>{t('settings.export')}</span>
+          <span>›</span>
+        </button>
+        <label className="row row-button">
+          <span>{t('settings.import')}</span>
+          <span>›</span>
+          <input
+            type="file"
+            accept="application/json"
+            hidden
+            onChange={(e) => {
+              const f = e.target.files?.[0];
+              if (f) void importData(f);
+              e.target.value = '';
+            }}
+          />
+        </label>
+        <button className="row row-button" onClick={() => void reset('stats')}>
+          <span>{t('settings.resetStats')}</span>
+          <span>›</span>
+        </button>
+        <button className="row row-button danger" onClick={() => void reset('all')}>
+          <span>{t('settings.resetAll')}</span>
+          <span>›</span>
+        </button>
+      </Group>
+
+      {message && (
+        <div className="label" role="status">
+          {message}
+        </div>
+      )}
     </section>
   );
 }

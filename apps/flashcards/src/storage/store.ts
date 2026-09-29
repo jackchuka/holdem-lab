@@ -15,6 +15,8 @@ export interface Store {
   putSettings(s: Settings): Promise<void>;
   exportAll(): Promise<ExportData>;
   importAll(data: ExportData): Promise<void>;
+  clearHistory(): Promise<void>;
+  clearProgress(): Promise<void>;
 }
 
 export function parseExport(raw: unknown): ExportData {
@@ -102,6 +104,13 @@ export function createMemoryStore(): Store {
       reviews = new Map(data.reviews.map((r) => [r.itemKey, r]));
       history = [...data.history];
       settings = { ...data.settings };
+    },
+    clearHistory: async () => {
+      history = [];
+    },
+    clearProgress: async () => {
+      history = [];
+      reviews = new Map();
     },
   };
 }

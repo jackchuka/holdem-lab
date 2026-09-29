@@ -22,6 +22,7 @@
   --suit-h: #c62828;
   --suit-d: #c62828;
   --suit-c: #1a1a1a;
+  --danger: #ff8a80;
 }
 
 :root[data-theme='dark'] {
@@ -47,6 +48,7 @@
   --suit-h: #d6264a;
   --suit-d: #d6264a;
   --suit-c: #16181d;
+  --danger: #ff5c7a;
 }
 
 :root[data-theme='light'] {
@@ -72,6 +74,7 @@
   --suit-h: #d12c2c;
   --suit-d: #d12c2c;
   --suit-c: #1c1c1e;
+  --danger: #c23b3b;
 }
 
 :root[data-theme='midnight'] {
@@ -97,6 +100,7 @@
   --suit-h: #e0245e;
   --suit-d: #e0245e;
   --suit-c: #16132e;
+  --danger: #ff7a9a;
 }
 
 :root[data-four-color='true'] {

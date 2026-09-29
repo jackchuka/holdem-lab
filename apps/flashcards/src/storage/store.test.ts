@@ -42,6 +42,33 @@ describe.each(factories)('%s store', (_name, make) => {
     expect(await store.getSettings()).toMatchObject({ theme: 'dark', locale: 'ja' });
   });
 
+  const seed = async (store: Store) => {
+    await store.putReview(applyReview(undefined, 'po:bet-50', 'potodds', 'good', now));
+    await store.addHistory(entry(100));
+    await store.putEquity('k', 0.42);
+    await store.putSettings({ ...defaultSettings(), theme: 'dark' });
+  };
+
+  it('clearHistory removes only the answer history', async () => {
+    const store = await make();
+    await seed(store);
+    await store.clearHistory();
+    expect(await store.getHistory(0)).toEqual([]);
+    expect(await store.getReviews()).toHaveLength(1);
+    expect(await store.getEquity('k')).toBe(0.42);
+    expect((await store.getSettings()).theme).toBe('dark');
+  });
+
+  it('clearProgress removes history and reviews but keeps settings and equity cache', async () => {
+    const store = await make();
+    await seed(store);
+    await store.clearProgress();
+    expect(await store.getHistory(0)).toEqual([]);
+    expect(await store.getReviews()).toEqual([]);
+    expect(await store.getEquity('k')).toBe(0.42);
+    expect((await store.getSettings()).theme).toBe('dark');
+  });
+
   it('round-trips an export through JSON', async () => {
     const store = await make();
     await store.putReview(applyReview(undefined, 'outs:oesd', 'outs', 'good', now));

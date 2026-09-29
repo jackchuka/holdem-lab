@@ -52,5 +52,11 @@ export async function createDexieStore(name = 'holdem-lab-flashcards'): Promise<
         await db.settings.put({ key: 'settings', value: data.settings });
       });
     },
+    clearHistory: () => db.history.clear(),
+    clearProgress: () =>
+      db.transaction('rw', [db.reviews, db.history], async () => {
+        await db.reviews.clear();
+        await db.history.clear();
+      }),
   };
 }
