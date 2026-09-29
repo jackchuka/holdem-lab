@@ -1,5 +1,5 @@
 import { CATEGORIES, categoryOfKey } from '@holdem-lab/quiz';
-import { ITEM_KINDS, defaultSettings, sanitizeSettings, type HistoryEntry, type ReviewRecord, type Settings } from '../types';
+import { ITEM_KINDS, sanitizeSettings, type HistoryEntry, type ReviewRecord, type Settings } from '../types';
 
 export type ExportData = { version: 1; reviews: ReviewRecord[]; history: HistoryEntry[]; settings: Settings };
 

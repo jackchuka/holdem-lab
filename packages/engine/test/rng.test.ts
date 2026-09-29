@@ -20,7 +20,7 @@ describe('createRng', () => {
   it('shuffles in place without losing items', () => {
     const arr = [1, 2, 3, 4, 5, 6];
     createRng(3).shuffle(arr);
-    expect([...arr].sort()).toEqual([1, 2, 3, 4, 5, 6]);
+    expect([...arr].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5, 6]);
   });
 
   it('refuses to pick from an empty array', () => {

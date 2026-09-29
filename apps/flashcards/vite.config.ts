@@ -4,14 +4,15 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
+  base: process.env.BASE_PATH ?? '/',
   publicDir: fileURLToPath(new URL('../../packages/assets/public', import.meta.url)),
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'holdem-lab flashcards',
-        short_name: 'holdem-lab',
+        name: 'Flashcards',
+        short_name: 'Flashcards',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#0d3b26',

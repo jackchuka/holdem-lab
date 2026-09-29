@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@holdem-lab/assets": "workspace:*",
-    "@playwright/test": "^1.63.0",
     "@testing-library/react": "^16.3.3",
     "@types/node": "^24.0.0",
     "@types/react": "^19.3.0",

@@ -33,7 +33,7 @@ export function straightHigh(mask: number): number {
 
 export function evaluate(cards: readonly Card[]): HandRank {
   if (cards.length < 5 || cards.length > 7) throw new Error(`evaluate needs 5-7 cards, got ${cards.length}`);
-  const counts = new Array<number>(13).fill(0);
+  const counts = Array.from({ length: 13 }, () => 0);
   const suitMasks = [0, 0, 0, 0];
   const suitCounts = [0, 0, 0, 0];
   let mask = 0;

@@ -46,7 +46,7 @@ export function Home({ store, settings, available, onSettings, onStart }: Props)
 
   return (
     <section className="app-main">
-      <h1 className="title">holdem-lab</h1>
+      <h1 className="title">Flashcards</h1>
       <div className="panel stats-row">
         <div>
           <div className="label">{t('home.due')}</div>

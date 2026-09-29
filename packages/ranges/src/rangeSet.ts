@@ -35,7 +35,7 @@ export function loadRangeSet(json: unknown): RangeSet {
   for (const pos of POSITIONS) {
     const rawSpot = spots[pos];
     if (!isObject(rawSpot) || !isObject(rawSpot.raise)) return fail(`${pos}.raise must be an object`);
-    const spot = Object.fromEntries(HAND_CLASSES.map((hc) => [hc, { raise: 0 }])) as Spot;
+    const spot: Spot = Object.fromEntries(HAND_CLASSES.map((hc) => [hc, { raise: 0 }]));
     for (const [token, value] of Object.entries(rawSpot.raise)) {
       if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 1) fail(`${pos}.${token} must be between 0 and 1`);
       let hands: HandClass[] = [];

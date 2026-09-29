@@ -16,7 +16,7 @@ export function computeStreak(history: HistoryEntry[], now: number): number {
 }
 
 export function dailyCounts(history: HistoryEntry[], now: number, days = 30): number[] {
-  const counts = new Array<number>(days).fill(0);
+  const counts = Array.from({ length: days }, () => 0);
   const today = startOfDay(now);
   for (const h of history) {
     const ago = Math.round((today - startOfDay(h.at)) / DAY_MS);

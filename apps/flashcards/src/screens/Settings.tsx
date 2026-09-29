@@ -67,7 +67,7 @@ export function SettingsScreen({ store, settings, rangeSet, onSettings, onImport
     const blob = new Blob([JSON.stringify(await store.exportAll())], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `holdem-lab-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `flashcards-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(a.href);
   };
