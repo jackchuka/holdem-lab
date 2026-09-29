@@ -1,0 +1,11 @@
+{
+  "name": "@holdem-lab/assets",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "generate": "pwa-assets-generator --preset minimal-2023 public/icon.svg"
+  },
+  "devDependencies": {
+    "@vite-pwa/assets-generator": "^1.0.0"
+  }
+}
