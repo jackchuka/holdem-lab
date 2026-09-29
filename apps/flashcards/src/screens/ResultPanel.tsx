@@ -1,6 +1,6 @@
+import { RangeGrid } from '@holdem-lab/ui';
 import { useI18n } from '../i18n/i18n';
 import type { AnswerResult } from '../session/runner';
-import { RangeGrid } from './RangeGrid';
 
 export function ResultPanel({ result, onNext, advancing }: { result: AnswerResult; onNext: () => void; advancing?: boolean }) {
   const { t, text } = useI18n();
@@ -21,7 +21,15 @@ export function ResultPanel({ result, onNext, advancing }: { result: AnswerResul
           <div key={i}>{text(l)}</div>
         ))}
       </div>
-      {explanation.grid && <RangeGrid raise={explanation.grid.raise} highlight={explanation.grid.highlight} />}
+      {explanation.grid && (
+        <div className="result-grid">
+          <RangeGrid
+            range={new Map(Object.entries(explanation.grid.raise).filter(([, w]) => w > 0))}
+            highlight={explanation.grid.highlight}
+            label={t('result.rangeGrid')}
+          />
+        </div>
+      )}
       <button className="primary" data-testid="next" disabled={advancing} onClick={onNext}>
         {t('result.next')}
       </button>
