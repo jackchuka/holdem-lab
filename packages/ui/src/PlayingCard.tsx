@@ -3,7 +3,7 @@ import { RANKS, rankOf, suitOf, type Card } from '@holdem-lab/engine';
 const GLYPHS = ['♠', '♥', '♦', '♣'];
 const KEYS = ['s', 'h', 'd', 'c'];
 
-export type CardSize = 'md' | 'lg';
+export type CardSize = 'sm' | 'md' | 'lg';
 
 export function PlayingCard({ card, size = 'md' }: { card?: Card; size?: CardSize }) {
   if (card === undefined) {
