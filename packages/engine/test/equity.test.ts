@@ -20,4 +20,9 @@ describe('equity', () => {
   it('rejects duplicate cards', () => {
     expect(() => eq('AsKs', 'AsQd')).toThrow();
   });
+
+  it('reports win and tie shares', () => {
+    const r = equity(parseCards('2c3d'), parseCards('4h5s'), parseCards('AsKsQsJsTs'));
+    expect(r).toEqual({ equity: 0.5, win: 0, tie: 1, iterations: 1 });
+  });
 });
