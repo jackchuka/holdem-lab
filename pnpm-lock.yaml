@@ -175,6 +175,12 @@ importers:
 
   packages/engine: {}
 
+  packages/ranges:
+    dependencies:
+      '@holdem-lab/engine':
+        specifier: workspace:*
+        version: link:../engine
+
   packages/tsconfig: {}
 
 packages:
