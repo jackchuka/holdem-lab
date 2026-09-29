@@ -170,8 +170,8 @@ importers:
         specifier: ^1.63.0
         version: 1.63.0
       '@vite-pwa/assets-generator':
-        specifier: ^1.0.4
-        version: 1.0.4(@types/node@24.19.0)
+        specifier: ^2.0.0
+        version: 2.0.0(@types/node@24.19.0)
       oxlint:
         specifier: ^1.86.0
         version: 1.86.0(oxlint-tsgolint@7.0.2003)
@@ -1734,6 +1734,11 @@ packages:
     engines: {node: '>=16.14.0'}
     hasBin: true
 
+  '@vite-pwa/assets-generator@2.0.0':
+    resolution: {integrity: sha512-GBjHBLBzOP1GDJTc7MjeDdeJTi+PS9eFjw3HYjNHXnEbkS7vRS/YFwl8VW5/4vWF0Fo35Mji1yXAABvSVzu0Ew==}
+    engines: {node: '>=20.19.0'}
+    hasBin: true
+
   '@vitejs/plugin-react@6.1.1':
     resolution: {integrity: sha512-yxLaQV9gkhS8ezJqCM6+ndU7mDY6gqAg75NQ+0IjwEI8IYOmQCgkRwHKVSfWXW076DsqMo0Dk+0FK1U+M5RgFw==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -1858,6 +1863,10 @@ packages:
   cac@6.7.14:
     resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
     engines: {node: '>=8'}
+
+  cac@7.0.0:
+    resolution: {integrity: sha512-tixWYgm5ZoOD+3g6UTea91eow5z6AAHaho3g0V9CNSNb45gM8SmflpAc+GRd1InC4AqN/07Unrgp56Y94N9hJQ==}
+    engines: {node: '>=20.19.0'}
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
@@ -4320,6 +4329,18 @@ snapshots:
       unconfig: 7.5.0
     transitivePeerDependencies:
       - '@types/node'
+    optional: true
+
+  '@vite-pwa/assets-generator@2.0.0(@types/node@24.19.0)':
+    dependencies:
+      cac: 7.0.0
+      consola: 3.4.2
+      picocolors: 1.1.1
+      sharp: 0.35.5(@types/node@24.19.0)
+      sharp-ico: 0.1.5(@types/node@24.19.0)
+      unconfig: 7.5.0
+    transitivePeerDependencies:
+      - '@types/node'
 
   '@vitejs/plugin-react@6.1.1(vite@8.3.1(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))':
     dependencies:
@@ -4433,7 +4454,10 @@ snapshots:
 
   buffer-from@1.1.2: {}
 
-  cac@6.7.14: {}
+  cac@6.7.14:
+    optional: true
+
+  cac@7.0.0: {}
 
   call-bind-apply-helpers@1.0.2:
     dependencies:
@@ -4456,7 +4480,8 @@ snapshots:
 
   chai@6.2.2: {}
 
-  colorette@2.0.20: {}
+  colorette@2.0.20:
+    optional: true
 
   commander@2.20.3: {}
 
