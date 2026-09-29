@@ -1,0 +1,5 @@
+.hl-row { display: flex; gap: 6px; justify-content: center; }
+.hl-card { display: block; border-radius: 7px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35); flex-shrink: 0; }
+.hl-card--md { width: 46px; height: 64px; }
+.hl-card--lg { width: 56px; height: 78px; }
+.hl-card--empty { background: var(--slot); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08); }

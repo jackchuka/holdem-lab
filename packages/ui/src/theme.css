@@ -1,0 +1,105 @@
+:root,
+:root[data-theme='felt'] {
+  --bg: radial-gradient(circle at 50% 30%, #1f6b45, #0d3b26);
+  --bg-solid: #0d3b26;
+  --fg: #f3ecd8;
+  --muted: rgba(243, 236, 216, 0.7);
+  --accent: #d8b45a;
+  --accent-fg: #1f1a0e;
+  --surface: rgba(0, 0, 0, 0.22);
+  --btn: rgba(255, 255, 255, 0.1);
+  --btn-border: rgba(255, 255, 255, 0.18);
+  --card-bg: #fbf7ec;
+  --slot: rgba(0, 0, 0, 0.18);
+  --panel: #fbf7ec;
+  --panel-fg: #1a1a1a;
+  --panel-soft: #efe7d2;
+  --ok: #2e9d5b;
+  --ng: #a33a3a;
+  --ok-text: #1f7a45;
+  --ng-text: #b23030;
+  --suit-s: #1a1a1a;
+  --suit-h: #c62828;
+  --suit-d: #c62828;
+  --suit-c: #1a1a1a;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0f1115;
+  --bg-solid: #0f1115;
+  --fg: #e6e8ee;
+  --muted: rgba(230, 232, 238, 0.65);
+  --accent: #22d3a6;
+  --accent-fg: #07231c;
+  --surface: #1b1e25;
+  --btn: #1b1e25;
+  --btn-border: #2c3039;
+  --card-bg: #f4f5f7;
+  --slot: #1b1e25;
+  --panel: #1b1e25;
+  --panel-fg: #e6e8ee;
+  --panel-soft: #23262e;
+  --ok: #1f9e7c;
+  --ng: #b8394f;
+  --ok-text: #22d3a6;
+  --ng-text: #ff5c7a;
+  --suit-s: #16181d;
+  --suit-h: #d6264a;
+  --suit-d: #d6264a;
+  --suit-c: #16181d;
+}
+
+:root[data-theme='light'] {
+  --bg: #f7f6f2;
+  --bg-solid: #f7f6f2;
+  --fg: #1c1c1e;
+  --muted: rgba(28, 28, 30, 0.6);
+  --accent: #2f5bea;
+  --accent-fg: #ffffff;
+  --surface: #ecebe5;
+  --btn: #ffffff;
+  --btn-border: #dcd9d0;
+  --card-bg: #ffffff;
+  --slot: #e4e2db;
+  --panel: #ffffff;
+  --panel-fg: #1c1c1e;
+  --panel-soft: #f1efe8;
+  --ok: #2e9d5b;
+  --ng: #c23b3b;
+  --ok-text: #1f7a45;
+  --ng-text: #c23b3b;
+  --suit-s: #1c1c1e;
+  --suit-h: #d12c2c;
+  --suit-d: #d12c2c;
+  --suit-c: #1c1c1e;
+}
+
+:root[data-theme='midnight'] {
+  --bg: linear-gradient(160deg, #1a1440, #0b0b1f);
+  --bg-solid: #0b0b1f;
+  --fg: #ece8ff;
+  --muted: rgba(236, 232, 255, 0.65);
+  --accent: #f5c451;
+  --accent-fg: #1a1440;
+  --surface: rgba(255, 255, 255, 0.08);
+  --btn: rgba(255, 255, 255, 0.08);
+  --btn-border: rgba(255, 255, 255, 0.16);
+  --card-bg: #ffffff;
+  --slot: rgba(255, 255, 255, 0.06);
+  --panel: #f4f1ff;
+  --panel-fg: #16132e;
+  --panel-soft: #e6e0ff;
+  --ok: #2e9d5b;
+  --ng: #b8394f;
+  --ok-text: #1f7a45;
+  --ng-text: #c0244e;
+  --suit-s: #16132e;
+  --suit-h: #e0245e;
+  --suit-d: #e0245e;
+  --suit-c: #16132e;
+}
+
+:root[data-four-color='true'] {
+  --suit-d: #1e5fd6;
+  --suit-c: #1f8a3a;
+}
