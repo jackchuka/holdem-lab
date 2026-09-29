@@ -1,0 +1,15 @@
+{
+  "name": "holdem-lab",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.6.0",
+  "scripts": {
+    "test": "pnpm -r --if-present test",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "build": "pnpm -r --if-present build"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2"
+  }
+}
