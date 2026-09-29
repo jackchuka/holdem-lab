@@ -25,7 +25,7 @@ jobs:
       - name: Build each app under /<app>/
         run: |
           mkdir -p site
-          cp site-root/index.html site/
+          cp site-root/index.html packages/assets/brand/holdem-lab.svg site/
           for dir in apps/*/; do
             app=$(basename "$dir")
             BASE_PATH="${PAGES_BASE}/${app}/" pnpm --filter "./apps/${app}" build

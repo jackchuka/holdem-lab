@@ -1,11 +1,9 @@
-import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
-  publicDir: fileURLToPath(new URL('../../packages/assets/public', import.meta.url)),
   plugins: [
     react(),
     VitePWA({

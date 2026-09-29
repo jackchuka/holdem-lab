@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p .",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "icons": "element-icon 1 Fc public/icon.svg && pwa-assets-generator"
   },
   "dependencies": {
     "@holdem-lab/engine": "workspace:*",

@@ -46,7 +46,10 @@ export function Home({ store, settings, available, onSettings, onStart }: Props)
 
   return (
     <section className="app-main">
-      <h1 className="title">Flashcards</h1>
+      <h1 className="title brand">
+        <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" />
+        Flashcards
+      </h1>
       <div className="panel stats-row">
         <div>
           <div className="label">{t('home.due')}</div>

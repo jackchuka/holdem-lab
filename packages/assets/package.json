@@ -2,10 +2,14 @@
   "name": "@holdem-lab/assets",
   "private": true,
   "version": "0.0.0",
-  "scripts": {
-    "generate": "pwa-assets-generator --preset minimal-2023 public/icon.svg"
+  "type": "module",
+  "bin": {
+    "element-icon": "./bin/element-icon.mjs"
   },
-  "devDependencies": {
-    "@vite-pwa/assets-generator": "^1.0.0"
+  "exports": {
+    ".": "./src/element-icon.mjs"
+  },
+  "scripts": {
+    "brand": "node bin/element-icon.mjs 0 Hl brand/holdem-lab.svg"
   }
 }

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="packages/assets/public/icon.svg" width="96" alt="holdem-lab">
+<img src="packages/assets/brand/holdem-lab.svg" width="96" alt="holdem-lab">
 
 # holdem-lab
 
@@ -18,14 +18,14 @@
 
 ## アプリ
 
-### Flashcards
+### <img src="apps/flashcards/public/icon.svg" width="28" align="top" alt=""> Flashcards
 
 **勝率・アウツ・レンジ・ポットオッズを、指が覚えるまで。**<br>
 数字と判断を間隔反復のフラッシュカードで身につける PWA。
 
 <img src="docs/assets/home.png" width="30%" alt="ホーム"> <img src="docs/assets/question.png" width="30%" alt="出題"> <img src="docs/assets/result.png" width="30%" alt="解説">
 
-**[Flashcards を開く](https://jackchuka.github.io/holdem-lab/flashcards/)**。スマホで開いて「ホーム画面に追加」すると、オフラインでも使える。
+**[Flashcards を開く](https://jackchuka.com/holdem-lab/flashcards/)**。スマホで開いて「ホーム画面に追加」すると、オフラインでも使える。
 
 - **4つの分野**
   - ハンド対ハンドの勝率（スライダーで回答）
@@ -60,7 +60,7 @@
 | `packages/ranges` | レンジ表記（`A2s+` など）の展開と検証、6-max 100bb RFI データ |
 | `packages/quiz` | 問題の型、4分野の問題生成、採点、問題文の日英辞書 |
 | `packages/ui` | カード・ボードの SVG コンポーネントとテーマのトークン |
-| `packages/assets` | 共通のアイコン |
+| `packages/assets` | ロゴとアイコンの生成（周期表のマスの形。`element-icon <番号> <記号> <出力.svg>`） |
 
 ## 開発
 
@@ -84,7 +84,7 @@ pnpm --filter @holdem-lab/flashcards dev   # 1つだけ起動
 | `pnpm e2e` | E2E テスト（Playwright。初回は `pnpm exec playwright install chromium`） |
 | `pnpm check-licenses` | アプリに同梱する依存パッケージのライセンス確認 |
 
-`main` への push で GitHub Pages にデプロイされる。`apps/<アプリ名>` はそれぞれ `https://jackchuka.github.io/holdem-lab/<アプリ名>/` に置かれる。アプリを追加したら、ルートの一覧ページ `site-root/index.html` にもリンクを足す。
+`main` への push で GitHub Pages にデプロイされる。`apps/<アプリ名>` はそれぞれ `https://jackchuka.com/holdem-lab/<アプリ名>/` に置かれる。アプリを追加したら、ルートの一覧ページ `site-root/index.html` にリンクを足し、次の番号と2文字の記号でアイコンを作る（例: `element-icon 2 Eq public/icon.svg`。Flashcards は `pnpm --filter @holdem-lab/flashcards icons` で PNG まで生成する）。
 
 ## レンジデータについて
 
