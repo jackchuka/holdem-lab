@@ -26,6 +26,10 @@ jobs:
         run: |
           mkdir -p site
           cp site-root/index.html packages/assets/brand/holdem-lab.svg site/
+          if [ -n "$CF_BEACON_TOKEN" ]; then
+            beacon="<script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{\"token\":\"${CF_BEACON_TOKEN}\"}'></script>"
+            sed -i "s|</body>|${beacon}</body>|" site/index.html
+          fi
           for dir in apps/*/; do
             app=$(basename "$dir")
             BASE_PATH="${PAGES_BASE}/${app}/" pnpm --filter "./apps/${app}" build
@@ -33,6 +37,7 @@ jobs:
           done
         env:
           PAGES_BASE: ${{ steps.pages.outputs.base_path }}
+          CF_BEACON_TOKEN: ${{ vars.CF_BEACON_TOKEN }}
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: site

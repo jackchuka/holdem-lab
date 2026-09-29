@@ -7,7 +7,8 @@
     "element-icon": "./bin/element-icon.mjs"
   },
   "exports": {
-    ".": "./src/element-icon.mjs"
+    ".": "./src/element-icon.mjs",
+    "./vite": "./src/cloudflare-analytics.ts"
   },
   "scripts": {
     "brand": "node bin/element-icon.mjs 0 Hl brand/holdem-lab.svg"

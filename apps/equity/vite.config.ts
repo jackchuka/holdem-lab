@@ -1,3 +1,4 @@
+import { cloudflareAnalytics } from '@holdem-lab/assets/vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vitest/config';
@@ -6,6 +7,7 @@ export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
   plugins: [
     react(),
+    cloudflareAnalytics(process.env.CF_BEACON_TOKEN),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
