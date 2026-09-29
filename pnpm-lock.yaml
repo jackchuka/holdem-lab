@@ -175,6 +175,15 @@ importers:
 
   packages/engine: {}
 
+  packages/quiz:
+    dependencies:
+      '@holdem-lab/engine':
+        specifier: workspace:*
+        version: link:../engine
+      '@holdem-lab/ranges':
+        specifier: workspace:*
+        version: link:../ranges
+
   packages/ranges:
     dependencies:
       '@holdem-lab/engine':

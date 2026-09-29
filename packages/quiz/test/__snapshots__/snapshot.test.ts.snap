@@ -1,0 +1,488 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`question snapshots > equity question is stable for a fixed seed 1`] = `
+{
+  "answer": {
+    "kind": "numeric",
+    "tolerance": 5,
+    "value": 46.2,
+  },
+  "category": "equity",
+  "explanation": {
+    "headline": {
+      "key": "value",
+      "params": {
+        "value": "46.2%",
+      },
+    },
+    "lines": [
+      {
+        "key": "equity.approx",
+        "params": {
+          "a": "JTo",
+          "b": "75o",
+          "pct": 46,
+        },
+      },
+      {
+        "key": "hint.overUnder",
+      },
+    ],
+  },
+  "itemKey": "eq:JTo-vs-75o",
+  "prompt": {
+    "key": "equity.prompt",
+  },
+  "stage": {
+    "board": "",
+    "context": {
+      "cards": "7h5s",
+      "kind": "villain",
+    },
+    "hero": "JhTs",
+  },
+}
+`;
+
+exports[`question snapshots > outs question is stable for a fixed seed 1`] = `
+{
+  "answer": {
+    "correct": 1,
+    "kind": "choice",
+  },
+  "category": "outs",
+  "choices": [
+    {
+      "label": "11",
+    },
+    {
+      "label": "10",
+    },
+    {
+      "label": "7",
+    },
+    {
+      "label": "12",
+    },
+  ],
+  "explanation": {
+    "headline": {
+      "key": "outs.headline",
+      "params": {
+        "n": 10,
+      },
+    },
+    "lines": [
+      {
+        "key": "draw.gutshot",
+      },
+      {
+        "key": "outs.probabilities",
+        "params": {
+          "river": "38%",
+          "turn": "21%",
+        },
+      },
+      {
+        "key": "outs.rule",
+        "params": {
+          "approx": 40,
+          "n": 10,
+        },
+      },
+    ],
+  },
+  "followUp": {
+    "answer": {
+      "correct": 0,
+      "kind": "choice",
+    },
+    "category": "outs",
+    "choices": [
+      {
+        "label": "38%",
+      },
+      {
+        "label": "20%",
+        "mistake": {
+          "key": "mistake.ruleOfTwo",
+        },
+      },
+      {
+        "label": "43%",
+      },
+      {
+        "label": "21%",
+        "mistake": {
+          "key": "mistake.turnOnly",
+        },
+      },
+    ],
+    "explanation": {
+      "headline": {
+        "key": "value",
+        "params": {
+          "value": "38%",
+        },
+      },
+      "lines": [
+        {
+          "key": "outs.probabilities",
+          "params": {
+            "river": "38%",
+            "turn": "21%",
+          },
+        },
+        {
+          "key": "outs.rule",
+          "params": {
+            "approx": 40,
+            "n": 10,
+          },
+        },
+      ],
+    },
+    "itemKey": "odds:10",
+    "prompt": {
+      "key": "odds.prompt",
+      "params": {
+        "n": 10,
+      },
+    },
+    "stage": {
+      "board": [
+        48,
+        2,
+        12,
+      ],
+      "context": {
+        "cards": [
+          21,
+          38,
+        ],
+        "kind": "villain",
+        "label": {
+          "key": "hand.0",
+        },
+      },
+      "hero": [
+        11,
+        33,
+      ],
+    },
+  },
+  "itemKey": "outs:gutshot",
+  "prompt": {
+    "key": "outs.prompt",
+  },
+  "stage": {
+    "board": "As2d5s",
+    "context": {
+      "cards": "7hJd",
+      "kind": "villain",
+      "label": {
+        "key": "hand.0",
+      },
+    },
+    "hero": "4cTh",
+  },
+}
+`;
+
+exports[`question snapshots > potodds question is stable for a fixed seed 1`] = `
+{
+  "answer": {
+    "correct": 2,
+    "kind": "choice",
+  },
+  "category": "potodds",
+  "choices": [
+    {
+      "label": "38%",
+    },
+    {
+      "label": "50%",
+      "mistake": {
+        "key": "mistake.betOverPotPlusBet",
+      },
+    },
+    {
+      "label": "33%",
+    },
+    {
+      "label": "28%",
+    },
+  ],
+  "explanation": {
+    "headline": {
+      "key": "value",
+      "params": {
+        "value": "33%",
+      },
+    },
+    "lines": [
+      {
+        "key": "potodds.formula",
+      },
+      {
+        "key": "potodds.calc",
+        "params": {
+          "bet": 120,
+          "pct": "33%",
+          "pot": 120,
+        },
+      },
+      {
+        "key": "potodds.fold",
+        "params": {
+          "n": 2,
+          "pct": "4%",
+        },
+      },
+    ],
+  },
+  "itemKey": "po:bet-100",
+  "prompt": {
+    "key": "potodds.prompt",
+  },
+  "stage": {
+    "board": "4h5h2h5d",
+    "context": {
+      "bet": 120,
+      "kind": "pot",
+      "pot": 120,
+    },
+    "hero": "7sTd",
+  },
+}
+`;
+
+exports[`question snapshots > range question is stable for a fixed seed 1`] = `
+{
+  "answer": {
+    "correct": 0,
+    "kind": "choice",
+  },
+  "category": "range",
+  "choices": [
+    {
+      "label": "Fold",
+    },
+    {
+      "label": "Raise",
+    },
+  ],
+  "explanation": {
+    "grid": {
+      "highlight": "J6o",
+      "raise": {
+        "22": 1,
+        "32o": 0,
+        "32s": 0,
+        "33": 1,
+        "42o": 0,
+        "42s": 0,
+        "43o": 0,
+        "43s": 0,
+        "44": 1,
+        "52o": 0,
+        "52s": 0,
+        "53o": 0,
+        "53s": 0,
+        "54o": 0,
+        "54s": 0.5,
+        "55": 1,
+        "62o": 0,
+        "62s": 0,
+        "63o": 0,
+        "63s": 0,
+        "64o": 0,
+        "64s": 0,
+        "65o": 0,
+        "65s": 0.5,
+        "66": 1,
+        "72o": 0,
+        "72s": 0,
+        "73o": 0,
+        "73s": 0,
+        "74o": 0,
+        "74s": 0,
+        "75o": 0,
+        "75s": 0,
+        "76o": 0,
+        "76s": 1,
+        "77": 1,
+        "82o": 0,
+        "82s": 0,
+        "83o": 0,
+        "83s": 0,
+        "84o": 0,
+        "84s": 0,
+        "85o": 0,
+        "85s": 0,
+        "86o": 0,
+        "86s": 0,
+        "87o": 0,
+        "87s": 1,
+        "88": 1,
+        "92o": 0,
+        "92s": 0,
+        "93o": 0,
+        "93s": 0,
+        "94o": 0,
+        "94s": 0,
+        "95o": 0,
+        "95s": 0,
+        "96o": 0,
+        "96s": 0,
+        "97o": 0,
+        "97s": 0,
+        "98o": 0,
+        "98s": 1,
+        "99": 1,
+        "A2o": 0,
+        "A2s": 1,
+        "A3o": 0,
+        "A3s": 1,
+        "A4o": 0,
+        "A4s": 1,
+        "A5o": 0,
+        "A5s": 1,
+        "A6o": 0,
+        "A6s": 1,
+        "A7o": 0,
+        "A7s": 1,
+        "A8o": 0,
+        "A8s": 1,
+        "A9o": 0.5,
+        "A9s": 1,
+        "AA": 1,
+        "AJo": 1,
+        "AJs": 1,
+        "AKo": 1,
+        "AKs": 1,
+        "AQo": 1,
+        "AQs": 1,
+        "ATo": 1,
+        "ATs": 1,
+        "J2o": 0,
+        "J2s": 0,
+        "J3o": 0,
+        "J3s": 0,
+        "J4o": 0,
+        "J4s": 0,
+        "J5o": 0,
+        "J5s": 0,
+        "J6o": 0,
+        "J6s": 0,
+        "J7o": 0,
+        "J7s": 0,
+        "J8o": 0,
+        "J8s": 0,
+        "J9o": 0,
+        "J9s": 1,
+        "JJ": 1,
+        "JTo": 0.5,
+        "JTs": 1,
+        "K2o": 0,
+        "K2s": 0,
+        "K3o": 0,
+        "K3s": 0,
+        "K4o": 0,
+        "K4s": 0,
+        "K5o": 0,
+        "K5s": 0,
+        "K6o": 0,
+        "K6s": 0.5,
+        "K7o": 0,
+        "K7s": 1,
+        "K8o": 0,
+        "K8s": 1,
+        "K9o": 0,
+        "K9s": 1,
+        "KJo": 1,
+        "KJs": 1,
+        "KK": 1,
+        "KQo": 1,
+        "KQs": 1,
+        "KTo": 1,
+        "KTs": 1,
+        "Q2o": 0,
+        "Q2s": 0,
+        "Q3o": 0,
+        "Q3s": 0,
+        "Q4o": 0,
+        "Q4s": 0,
+        "Q5o": 0,
+        "Q5s": 0,
+        "Q6o": 0,
+        "Q6s": 0,
+        "Q7o": 0,
+        "Q7s": 0,
+        "Q8o": 0,
+        "Q8s": 0.5,
+        "Q9o": 0,
+        "Q9s": 1,
+        "QJo": 1,
+        "QJs": 1,
+        "QQ": 1,
+        "QTo": 0.5,
+        "QTs": 1,
+        "T2o": 0,
+        "T2s": 0,
+        "T3o": 0,
+        "T3s": 0,
+        "T4o": 0,
+        "T4s": 0,
+        "T5o": 0,
+        "T5s": 0,
+        "T6o": 0,
+        "T6s": 0,
+        "T7o": 0,
+        "T7s": 0,
+        "T8o": 0,
+        "T8s": 1,
+        "T9o": 0,
+        "T9s": 1,
+        "TT": 1,
+      },
+    },
+    "headline": {
+      "key": "value",
+      "params": {
+        "value": "Fold",
+      },
+    },
+    "lines": [
+      {
+        "key": "range.summary",
+        "params": {
+          "pct": 24,
+          "pos": "HJ",
+        },
+      },
+      {
+        "key": "range.out",
+        "params": {
+          "hand": "J6o",
+        },
+      },
+    ],
+  },
+  "itemKey": "rfi:HJ:J6o",
+  "prompt": {
+    "key": "range.prompt",
+    "params": {
+      "pos": "HJ",
+    },
+  },
+  "stage": {
+    "board": "",
+    "context": {
+      "kind": "position",
+      "position": "HJ",
+    },
+    "hero": "Jd6c",
+  },
+}
+`;
