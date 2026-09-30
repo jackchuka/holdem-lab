@@ -5,6 +5,8 @@ export const APPS = [
   { id: 'equity', title: 'Equity', ja: 'ハンドとレンジの勝率計算機', en: 'Hand and range equity calculator', devPort: 5174 },
 ] as const;
 
+export const HOME_DEV_PORT = 5170;
+
 export type AppName = (typeof APPS)[number]['id'];
 
 export const DEV_PORTS = Object.fromEntries(APPS.map((a) => [a.id, a.devPort])) as Record<AppName, number>;

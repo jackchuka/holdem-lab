@@ -108,7 +108,7 @@ Node.js 24 以上と pnpm（`corepack enable` で `packageManager` のバージ�
 
 ```sh
 pnpm install
-pnpm dev                                   # すべてのアプリを起動（ポートは 5173 から順に割り当て）
+pnpm dev                                   # トップページ（http://localhost:5170/）とすべてのアプリを起動
 pnpm --filter @holdem-lab/flashcards dev   # 1つだけ起動
 ```
 
@@ -116,7 +116,7 @@ pnpm --filter @holdem-lab/flashcards dev   # 1つだけ起動
 
 | コマンド | 内容 |
 | --- | --- |
-| `pnpm dev` | `apps/*` の開発サーバーを並列に起動 |
+| `pnpm dev` | トップページと `apps/*` の開発サーバーを並列に起動（ポートは `packages/assets/src/apps.ts` で固定） |
 | `pnpm build` | 本番ビルド |
 | `pnpm test` | 単体テスト（Vitest） |
 | `pnpm typecheck` | 型チェック |
