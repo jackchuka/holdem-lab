@@ -101,7 +101,7 @@ export function App({ store, today: getToday, initial, badUrl, reducedMotion, na
   const readName = (name: string) => {
     dropShareParams();
     setView({ key: { kind: 'name', name }, date: today, source: 'name' });
-    setPhase('done');
+    setPhase(reducedMotion ? 'done' : 'revealing');
     setImage(null);
   };
   const saveName = (name: string) => {
