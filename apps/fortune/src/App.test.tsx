@@ -28,6 +28,14 @@ function setup(opts: { initial?: View; seen?: boolean; badUrl?: boolean; reduced
 
 const tierText = (key: View['key']) => t(`tier.${computeFortune(key, TODAY).tier}`);
 
+function readName(name: string) {
+  fireEvent.change(screen.getByLabelText('名前で占う'), { target: { value: name } });
+  fireEvent.click(screen.getByRole('button', { name: '占う' }));
+  act(() => {
+    vi.advanceTimersByTime(REVEAL_STEP_MS * 4);
+  });
+}
+
 beforeEach(() => {
   localStorage.setItem('holdem-lab:fortune:settings', JSON.stringify({ locale: 'ja' }));
   vi.useFakeTimers();
@@ -76,8 +84,7 @@ describe('App', () => {
 
   it('reads a fortune by name, saves it, edits it and clears it', () => {
     const { store } = setup({ seen: true });
-    fireEvent.change(screen.getByLabelText('名前で占う'), { target: { value: 'Taro' } });
-    fireEvent.click(screen.getByRole('button', { name: '占う' }));
+    readName('Taro');
     expect(screen.getByText(/taro さんの/)).toBeTruthy();
     expect(screen.getByTestId('tier').textContent).toBe(tierText({ kind: 'name', name: 'taro' }));
     expect(store.seenToday(TODAY)).toBe(true);
@@ -97,10 +104,29 @@ describe('App', () => {
     expect(screen.getByTestId('tier').textContent).toBe(tierText({ kind: 'device', id: '0123456789abcdef' }));
   });
 
-  it('goes back to my fortune from a name', () => {
-    setup({ seen: true });
+  it('reveals a fortune read by name card by card without marking my own as seen', () => {
+    const { store } = setup();
     fireEvent.change(screen.getByLabelText('名前で占う'), { target: { value: 'Taro' } });
     fireEvent.click(screen.getByRole('button', { name: '占う' }));
+    expect(screen.getAllByTestId('card-back')).toHaveLength(7);
+    expect(screen.queryByTestId('tier')).toBeNull();
+    act(() => {
+      vi.advanceTimersByTime(REVEAL_STEP_MS * 4);
+    });
+    expect(screen.getByTestId('tier').textContent).toBe(tierText({ kind: 'name', name: 'taro' }));
+    expect(store.seenToday(TODAY)).toBe(false);
+  });
+
+  it('shows a fortune read by name at once with reduced motion', () => {
+    setup({ seen: true, reducedMotion: true });
+    fireEvent.change(screen.getByLabelText('名前で占う'), { target: { value: 'Taro' } });
+    fireEvent.click(screen.getByRole('button', { name: '占う' }));
+    expect(screen.getByTestId('tier')).toBeTruthy();
+  });
+
+  it('goes back to my fortune from a name', () => {
+    setup({ seen: true });
+    readName('Taro');
     fireEvent.click(screen.getByRole('button', { name: '自分の運勢に戻す' }));
     expect(screen.getByText(/の運勢$/).textContent).not.toContain('さんの');
   });
@@ -147,8 +173,7 @@ describe('App', () => {
       if (action === 'clear') {
         fireEvent.click(screen.getByRole('button', { name: '解除' }));
       } else {
-        fireEvent.change(screen.getByLabelText('名前で占う'), { target: { value: 'Taro' } });
-        fireEvent.click(screen.getByRole('button', { name: '占う' }));
+        readName('Taro');
         if (action === 'save') fireEvent.click(screen.getByRole('button', { name: 'この名前を自分の運勢にする' }));
       }
       expect(location.search, action).toBe('');
@@ -158,8 +183,7 @@ describe('App', () => {
 
   it('returns to the unrevealed card backs after clearing a saved name before revealing', () => {
     setup();
-    fireEvent.change(screen.getByLabelText('名前で占う'), { target: { value: 'Taro' } });
-    fireEvent.click(screen.getByRole('button', { name: '占う' }));
+    readName('Taro');
     fireEvent.click(screen.getByRole('button', { name: 'この名前を自分の運勢にする' }));
     fireEvent.click(screen.getByRole('button', { name: '解除' }));
     expect(screen.getByRole('button', { name: '運勢を見る' })).toBeTruthy();
