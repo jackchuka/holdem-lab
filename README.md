@@ -18,6 +18,24 @@
 
 ## アプリ
 
+### <img src="apps/fortune/public/icon.svg" width="28" align="top" alt=""> Fortune
+
+**配られた7枚で、今日を占う。**<br>
+毎日1回、手札2枚とボード5枚でできた役から吉凶を決める、ポーカーのおみくじ PWA。
+
+**[Fortune を開く](https://holdem-lab.com/fortune/)**。
+
+- **毎日1回・7枚で占う**
+  - ロイヤルフラッシュなら超大吉、ハイカードなら凶
+  - 手札のプリフロップ勝率、ラッキーポジション・スート・サイズ、今日の一手つき
+- **名前で占える**
+  - 友達の名前を入れると、その人の今日の運勢がわかる
+  - 名前を保存すると、別の端末でも同じ名前を保存すれば同じ運勢になる
+- **画像つきでシェア**
+  - スマホでは結果画像ごと共有し、リンクを開いた人にも同じ結果を見せる
+- **Equity で検証**: 配られたハンドとボードをそのまま Equity で開ける
+- **データは端末の中だけ**: 端末シードと保存名はブラウザにだけ保存し、サーバーには送らない
+
 ### <img src="apps/flashcards/public/icon.svg" width="28" align="top" alt=""> Flashcards
 
 **勝率・アウツ・レンジ・ポットオッズを、指が覚えるまで。**<br>
@@ -77,6 +95,7 @@
 | --- | --- |
 | `apps/flashcards` | Flashcards（React + Vite の PWA） |
 | `apps/equity` | Equity（React + Vite の PWA） |
+| `apps/fortune` | Fortune（React + Vite の PWA） |
 | `packages/engine` | カード表現、5〜7枚の役判定、シード付き乱数、モンテカルロ勝率、アウツ、ドロー分類、多人数・レンジ対応の勝率セッション（全通り／モンテカルロ） |
 | `packages/ranges` | レンジ表記（`A2s+` など）の展開と検証、6-max 100bb RFI データ、重み付きレンジの表記の解析と生成 |
 | `packages/quiz` | 問題の型、4分野の問題生成、採点、問題文の日英辞書 |
@@ -105,7 +124,7 @@ pnpm --filter @holdem-lab/flashcards dev   # 1つだけ起動
 | `pnpm e2e` | E2E テスト（Playwright。初回は `pnpm exec playwright install chromium`） |
 | `pnpm check-licenses` | アプリに同梱する依存パッケージのライセンス確認 |
 
-`main` への push で GitHub Pages にデプロイされる。`apps/<アプリ名>` はそれぞれ `https://holdem-lab.com/<アプリ名>/` に置かれる。アプリを追加したら、ルートの一覧ページ `site-root/index.html` にリンクを足し、次の番号と2文字の記号でアイコンを作る（例: `element-icon 2 Eq public/icon.svg`。Flashcards は `pnpm --filter @holdem-lab/flashcards icons` で PNG まで生成する）。
+`main` への push で GitHub Pages にデプロイされる。`apps/<アプリ名>` はそれぞれ `https://holdem-lab.com/<アプリ名>/` に置かれる。アプリを追加したら、ルートの一覧ページ `site-root/index.html` にリンクを足し、次の番号と2文字の記号でアイコンを作る（学習用は 1 からの連番、遊び系は 100 からの連番）（例: `element-icon 2 Eq public/icon.svg`。Flashcards は `pnpm --filter @holdem-lab/flashcards icons` で PNG まで生成する）。
 
 ## レンジデータについて
 
