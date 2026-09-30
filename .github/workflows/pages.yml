@@ -22,11 +22,14 @@ jobs:
       - id: pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - run: pnpm install --frozen-lockfile
-      - name: Build each app under /<app>/
+      - name: Build the home page at / and each app under /<app>/
         run: |
-          node scripts/build-site-root.mjs site
+          BASE_PATH="${PAGES_BASE}/" pnpm --filter ./apps/home build
+          mkdir -p site
+          cp -R apps/home/dist/. site/
           for dir in apps/*/; do
             app=$(basename "$dir")
+            [ "$app" = home ] && continue
             BASE_PATH="${PAGES_BASE}/${app}/" pnpm --filter "./apps/${app}" build
             cp -R "apps/${app}/dist" "site/${app}"
           done

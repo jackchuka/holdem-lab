@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="packages/assets/brand/holdem-lab.svg" width="96" alt="holdem-lab">
+<img src="apps/home/public/icon.svg" width="96" alt="holdem-lab">
 
 # holdem-lab
 
@@ -111,13 +111,14 @@
 | --- | --- |
 | `apps/flashcards` | Flashcards（React + Vite の PWA） |
 | `apps/equity` | Equity（React + Vite の PWA） |
+| `apps/home` | トップページ（Vite + TypeScript。アプリ一覧は `packages/assets/src/apps.ts` からビルド時に生成） |
 | `apps/fortune` | Fortune（React + Vite の PWA） |
 | `apps/chips` | Chips（React + Vite + three.js の PWA） |
 | `packages/engine` | カード表現、5〜7枚の役判定、シード付き乱数、モンテカルロ勝率、アウツ、ドロー分類、多人数・レンジ対応の勝率セッション（全通り／モンテカルロ） |
 | `packages/ranges` | レンジ表記（`A2s+` など）の展開と検証、6-max 100bb RFI データ、重み付きレンジの表記の解析と生成 |
 | `packages/quiz` | 問題の型、4分野の問題生成、採点、問題文の日英辞書 |
 | `packages/ui` | カード・ボードの SVG コンポーネントとテーマのトークン、カードピッカーとレンジグリッド |
-| `packages/assets` | ロゴとアイコンの生成（周期表のマスの形。`element-icon <番号> <記号> <出力.svg>`）、アプリ一覧（`src/apps.ts`）とトップページの生成 |
+| `packages/assets` | ロゴとアイコンの生成（周期表のマスの形。`element-icon <番号> <記号> <出力.svg>`）、アプリ一覧（`src/apps.ts`。ポート、トップページに載せる説明とスクショ） |
 
 ## 開発
 
@@ -133,7 +134,7 @@ pnpm --filter @holdem-lab/flashcards dev   # 1つだけ起動
 
 | コマンド | 内容 |
 | --- | --- |
-| `pnpm dev` | トップページと `apps/*` の開発サーバーを並列に起動（ポートは `packages/assets/src/apps.ts` で固定） |
+| `pnpm dev` | `apps/*`（トップページを含む）の開発サーバーを並列に起動（ポートは `packages/assets/src/apps.ts` で固定） |
 | `pnpm build` | 本番ビルド |
 | `pnpm test` | 単体テスト（Vitest） |
 | `pnpm typecheck` | 型チェック |
@@ -141,7 +142,7 @@ pnpm --filter @holdem-lab/flashcards dev   # 1つだけ起動
 | `pnpm e2e` | E2E テスト（Playwright。初回は `pnpm exec playwright install chromium`） |
 | `pnpm check-licenses` | アプリに同梱する依存パッケージのライセンス確認 |
 
-`main` への push で GitHub Pages にデプロイされる。`apps/<アプリ名>` はそれぞれ `https://holdem-lab.com/<アプリ名>/` に置かれる。トップページ（`site-root/index.html` を雛形に `scripts/build-site-root.mjs` が生成）のアプリ一覧と開発サーバーのポートは `packages/assets/src/apps.ts` の表から作られる。アプリを追加したら、この表に1行足し、次の番号と2文字の記号でアイコンを作る（学習用は 1 からの連番、遊び系は 100 からの連番）（例: `element-icon 2 Eq public/icon.svg`。Flashcards は `pnpm --filter @holdem-lab/flashcards icons` で PNG まで生成する）。
+`main` への push で GitHub Pages にデプロイされる。`apps/home` はサイトのルート（`https://holdem-lab.com/`）に、それ以外の `apps/<アプリ名>` は `https://holdem-lab.com/<アプリ名>/` に置かれる。トップページのアプリ一覧と開発サーバーのポートは `packages/assets/src/apps.ts` の表から作られる。アプリを追加したら、この表に1行足し（トップページ用の説明 `lead` と、`docs/assets/` に置いた縦長スクショのファイル名 `shot` も書く）、次の番号と2文字の記号でアイコンを作る（学習用は 1 からの連番、遊び系は 100 からの連番）（例: `element-icon 2 Eq public/icon.svg`。Flashcards は `pnpm --filter @holdem-lab/flashcards icons` で PNG まで生成する）。
 
 ## レンジデータについて
 
