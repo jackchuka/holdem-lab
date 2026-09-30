@@ -25,7 +25,7 @@
 
 <img src="docs/assets/home.png" width="30%" alt="ホーム"> <img src="docs/assets/question.png" width="30%" alt="出題"> <img src="docs/assets/result.png" width="30%" alt="解説">
 
-**[Flashcards を開く](https://jackchuka.com/holdem-lab/flashcards/)**。スマホで開いて「ホーム画面に追加」すると、オフラインでも使える。
+**[Flashcards を開く](https://holdem-lab.com/flashcards/)**。スマホで開いて「ホーム画面に追加」すると、オフラインでも使える。
 
 - **4つの分野**
   - ハンド対ハンドの勝率（スライダーで回答）
@@ -56,7 +56,7 @@
 
 <img src="docs/assets/equity-main.png" width="30%" alt="勝率と次のカード"> <img src="docs/assets/equity-range.png" width="30%" alt="レンジ編集"> <img src="docs/assets/equity-analysis.png" width="30%" alt="レンジ内の勝率">
 
-**[Equity を開く](https://jackchuka.com/holdem-lab/equity/)**。
+**[Equity を開く](https://holdem-lab.com/equity/)**。
 
 - **ハンドでもレンジでも**
   - 各プレイヤーにハンド、レンジ、ランダムを割り当てる（最大9人）
@@ -105,7 +105,7 @@ pnpm --filter @holdem-lab/flashcards dev   # 1つだけ起動
 | `pnpm e2e` | E2E テスト（Playwright。初回は `pnpm exec playwright install chromium`） |
 | `pnpm check-licenses` | アプリに同梱する依存パッケージのライセンス確認 |
 
-`main` への push で GitHub Pages にデプロイされる。`apps/<アプリ名>` はそれぞれ `https://jackchuka.com/holdem-lab/<アプリ名>/` に置かれる。アプリを追加したら、ルートの一覧ページ `site-root/index.html` にリンクを足し、次の番号と2文字の記号でアイコンを作る（例: `element-icon 2 Eq public/icon.svg`。Flashcards は `pnpm --filter @holdem-lab/flashcards icons` で PNG まで生成する）。
+`main` への push で GitHub Pages にデプロイされる。`apps/<アプリ名>` はそれぞれ `https://holdem-lab.com/<アプリ名>/` に置かれる。アプリを追加したら、ルートの一覧ページ `site-root/index.html` にリンクを足し、次の番号と2文字の記号でアイコンを作る（例: `element-icon 2 Eq public/icon.svg`。Flashcards は `pnpm --filter @holdem-lab/flashcards icons` で PNG まで生成する）。
 
 ## レンジデータについて
 
