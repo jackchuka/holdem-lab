@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { HomeLink } from '@holdem-lab/ui';
 import { SettingsPanel } from './components/SettingsPanel';
 import { Sheet } from './components/Sheet';
 import { I18nProvider, createTranslator } from './i18n/i18n';
@@ -41,6 +42,7 @@ export function App({ autoplay = true }: { autoplay?: boolean }) {
     <I18nProvider value={translator}>
       <div className="app">
         <header className="app-header">
+          <HomeLink href={__HOME_LINK__} />
           <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" />
           <h1>Chips</h1>
           <span className="spacer" />

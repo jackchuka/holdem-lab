@@ -1,12 +1,13 @@
-import { DEV_PORTS } from '@holdem-lab/assets/apps';
+import { DEV_PORTS, homeLink } from '@holdem-lab/assets/apps';
 import { cloudflareAnalytics } from '@holdem-lab/assets/vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { defineConfig } from 'vitest/config';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   base: process.env.BASE_PATH ?? '/',
   server: { port: DEV_PORTS.chips, strictPort: true },
+  define: { __HOME_LINK__: JSON.stringify(homeLink(mode)) },
   plugins: [
     react(),
     cloudflareAnalytics(process.env.CF_BEACON_TOKEN),
@@ -31,4 +32,4 @@ export default defineConfig({
     environment: 'jsdom',
     include: ['src/**/*.test.{ts,tsx}'],
   },
-});
+}));

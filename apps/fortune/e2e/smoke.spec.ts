@@ -51,3 +51,8 @@ test('opens my fortune with a notice on a broken link', async ({ page }) => {
   await expect(page.getByRole('button', { name: '運勢を見る' })).toBeVisible();
   await expect(page).toHaveURL(/\/$/);
 });
+
+test('links back to the holdem-lab home page', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('link', { name: 'holdem-lab' })).toHaveAttribute('href', 'http://localhost:5170/');
+});
