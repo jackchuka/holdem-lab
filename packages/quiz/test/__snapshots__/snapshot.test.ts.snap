@@ -44,6 +44,316 @@ exports[`question snapshots > equity question is stable for a fixed seed 1`] = `
 }
 `;
 
+exports[`question snapshots > nuts question is stable for a fixed seed 1`] = `
+{
+  "answer": {
+    "correct": 0,
+    "kind": "choice",
+  },
+  "category": "nuts",
+  "choices": [
+    {
+      "label": "5 3",
+      "pattern": [
+        {
+          "rank": 3,
+          "suit": null,
+        },
+        {
+          "rank": 1,
+          "suit": null,
+        },
+      ],
+    },
+    {
+      "label": "4 4",
+      "mistake": {
+        "key": "nuts.miss.straight",
+        "params": {
+          "correctName": {
+            "key": "hand.4",
+          },
+          "hand": "4 4",
+          "name": {
+            "key": "hand.3",
+          },
+        },
+      },
+      "pattern": [
+        {
+          "rank": 2,
+          "suit": null,
+        },
+        {
+          "rank": 2,
+          "suit": null,
+        },
+      ],
+    },
+    {
+      "label": "A A",
+      "mistake": {
+        "key": "nuts.miss.straight",
+        "params": {
+          "correctName": {
+            "key": "hand.4",
+          },
+          "hand": "A A",
+          "name": {
+            "key": "hand.3",
+          },
+        },
+      },
+      "pattern": [
+        {
+          "rank": 12,
+          "suit": null,
+        },
+        {
+          "rank": 12,
+          "suit": null,
+        },
+      ],
+    },
+    {
+      "label": "T T",
+      "mistake": {
+        "key": "nuts.miss.straight",
+        "params": {
+          "correctName": {
+            "key": "hand.4",
+          },
+          "hand": "T T",
+          "name": {
+            "key": "hand.3",
+          },
+        },
+      },
+      "pattern": [
+        {
+          "rank": 8,
+          "suit": null,
+        },
+        {
+          "rank": 8,
+          "suit": null,
+        },
+      ],
+    },
+  ],
+  "explanation": {
+    "headline": {
+      "key": "nuts.headline",
+      "params": {
+        "hand": "5 3",
+        "name": {
+          "key": "hand.4",
+        },
+      },
+    },
+    "lines": [
+      {
+        "key": "nuts.tier",
+        "params": {
+          "hands": "5 3",
+          "n": 1,
+          "name": {
+            "key": "hand.4",
+          },
+        },
+      },
+      {
+        "key": "nuts.tier",
+        "params": {
+          "hands": "A A",
+          "n": 2,
+          "name": {
+            "key": "hand.3",
+          },
+        },
+      },
+      {
+        "key": "nuts.tier",
+        "params": {
+          "hands": "T T",
+          "n": 3,
+          "name": {
+            "key": "hand.3",
+          },
+        },
+      },
+    ],
+  },
+  "followUp": {
+    "answer": {
+      "correct": 1,
+      "kind": "choice",
+    },
+    "category": "nuts",
+    "choices": [
+      {
+        "label": "4 4",
+        "mistake": {
+          "key": "nuts.miss.sameCategory",
+          "params": {
+            "correctName": {
+              "key": "hand.3",
+            },
+            "hand": "4 4",
+            "name": {
+              "key": "hand.3",
+            },
+          },
+        },
+        "pattern": [
+          {
+            "rank": 2,
+            "suit": null,
+          },
+          {
+            "rank": 2,
+            "suit": null,
+          },
+        ],
+      },
+      {
+        "label": "A A",
+        "pattern": [
+          {
+            "rank": 12,
+            "suit": null,
+          },
+          {
+            "rank": 12,
+            "suit": null,
+          },
+        ],
+      },
+      {
+        "label": "T T",
+        "mistake": {
+          "key": "nuts.miss.sameCategory",
+          "params": {
+            "correctName": {
+              "key": "hand.3",
+            },
+            "hand": "T T",
+            "name": {
+              "key": "hand.3",
+            },
+          },
+        },
+        "pattern": [
+          {
+            "rank": 8,
+            "suit": null,
+          },
+          {
+            "rank": 8,
+            "suit": null,
+          },
+        ],
+      },
+      {
+        "label": "A T",
+        "mistake": {
+          "key": "nuts.miss.weaker",
+          "params": {
+            "correctName": {
+              "key": "hand.3",
+            },
+            "hand": "A T",
+            "name": {
+              "key": "hand.2",
+            },
+          },
+        },
+        "pattern": [
+          {
+            "rank": 12,
+            "suit": null,
+          },
+          {
+            "rank": 8,
+            "suit": null,
+          },
+        ],
+      },
+    ],
+    "explanation": {
+      "headline": {
+        "key": "nuts.headline",
+        "params": {
+          "hand": "A A",
+          "name": {
+            "key": "hand.3",
+          },
+        },
+      },
+      "lines": [
+        {
+          "key": "nuts.tier",
+          "params": {
+            "hands": "5 3",
+            "n": 1,
+            "name": {
+              "key": "hand.4",
+            },
+          },
+        },
+        {
+          "key": "nuts.tier",
+          "params": {
+            "hands": "A A",
+            "n": 2,
+            "name": {
+              "key": "hand.3",
+            },
+          },
+        },
+        {
+          "key": "nuts.tier",
+          "params": {
+            "hands": "T T",
+            "n": 3,
+            "name": {
+              "key": "hand.3",
+            },
+          },
+        },
+      ],
+    },
+    "itemKey": "nuts2:turn",
+    "prompt": {
+      "key": "nuts.second.prompt",
+    },
+    "stage": {
+      "board": [
+        11,
+        33,
+        48,
+        2,
+      ],
+      "context": {
+        "kind": "none",
+      },
+      "hero": [],
+    },
+  },
+  "itemKey": "nuts:turn:straight",
+  "prompt": {
+    "key": "nuts.prompt",
+  },
+  "stage": {
+    "board": "4cThAs2d",
+    "context": {
+      "kind": "none",
+    },
+    "hero": "",
+  },
+}
+`;
+
 exports[`question snapshots > outs question is stable for a fixed seed 1`] = `
 {
   "answer": {

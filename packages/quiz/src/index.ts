@@ -7,5 +7,6 @@ export * from './generators/equity';
 export * from './generators/outs';
 export * from './generators/range';
 export * from './generators/potodds';
+export * from './generators/nuts';
 export * from './registry';
 export * from './labels';

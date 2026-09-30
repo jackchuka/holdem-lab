@@ -32,6 +32,7 @@ const textsOf = (q: Question): Text[] => [
   ...q.explanation.lines,
   ...(q.choices ?? []).flatMap((c) => (c.mistake ? [c.mistake] : [])),
   ...(q.stage.context.kind === 'villain' && q.stage.context.label ? [q.stage.context.label] : []),
+  ...(q.stage.context.kind === 'prevNuts' ? [q.stage.context.label] : []),
   ...(q.followUp ? textsOf(q.followUp) : []),
 ];
 
@@ -43,6 +44,9 @@ describe('registry', () => {
     expect(categoryOfKey('rfi:BTN:K7o')).toBe('range');
     expect(categoryOfKey('po:bet-50')).toBe('potodds');
     expect(categoryOfKey('mdf:bet-50')).toBe('potodds');
+    expect(categoryOfKey('nuts:flop:sf')).toBe('nuts');
+    expect(categoryOfKey('nuts2:turn')).toBe('nuts');
+    expect(categoryOfKey('nutsnext:river:flush')).toBe('nuts');
     expect(() => categoryOfKey('zz:1')).toThrow();
   });
 
@@ -92,5 +96,8 @@ describe('registry', () => {
     expect(l('odds:9')).toEqual(['9アウツの確率', 'Odds with 9 outs']);
     expect(l('po:bet-75')).toEqual(['必要勝率 bet 75%', 'Required equity, bet 75%']);
     expect(l('mdf:bet-75')).toEqual(['MDF bet 75%', 'MDF, bet 75%']);
+    expect(l('nuts:flop:sf')).toEqual(['フロップのストレートフラッシュ', 'Straight flush on the flop']);
+    expect(l('nuts2:turn')).toEqual(['ターンのセカンドナッツ', 'Second nuts on the turn']);
+    expect(l('nutsnext:river:flush')).toEqual(['リバーで変わるナッツ：フラッシュ', 'New nuts on the river: Flush']);
   });
 });
