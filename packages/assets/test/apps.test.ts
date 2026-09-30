@@ -12,6 +12,14 @@ describe('APPS', () => {
     expect(Object.values(DEV_PORTS)).not.toContain(HOME_DEV_PORT);
   });
 
+  it('gives every app a screenshot and a longer lead in both languages', () => {
+    for (const a of APPS) {
+      expect(a.shot).toMatch(/^[a-z0-9-]+\.png$/);
+      expect(a.lead.ja.length).toBeGreaterThan(a.ja.length);
+      expect(a.lead.en.length).toBeGreaterThan(a.en.length);
+    }
+  });
+
   it('derives DEV_PORTS and appLinks from the list', () => {
     expect(DEV_PORTS).toEqual(Object.fromEntries(APPS.map((a) => [a.id, a.devPort])));
     expect(appLinks('production').equity).toBe('../equity/');
