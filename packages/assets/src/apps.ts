@@ -42,3 +42,7 @@ export function appLinks(mode: string): Record<AppName, string> {
     APPS.map((a) => [a.id, mode === 'development' ? `http://localhost:${a.devPort}/` : `../${a.id}/`]),
   ) as Record<AppName, string>;
 }
+
+export function homeLink(mode: string): string {
+  return mode === 'development' ? `http://localhost:${HOME_DEV_PORT}/` : '../';
+}

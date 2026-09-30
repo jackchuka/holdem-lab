@@ -1,0 +1,4 @@
+/* The padding and matching negative margin widen the tap target without changing the header's height. */
+.home-link { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; padding: 10px 0; margin: -10px 0; color: var(--muted); text-decoration: none; }
+.home-link-logo svg { display: block; width: 24px; height: 24px; }
+.home-link-sep { font-size: 16px; line-height: 1; }
