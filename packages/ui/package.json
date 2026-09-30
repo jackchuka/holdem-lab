@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit -p ."
   },
   "dependencies": {
+    "@holdem-lab/assets": "workspace:*",
     "@holdem-lab/engine": "workspace:*"
   },
   "peerDependencies": {

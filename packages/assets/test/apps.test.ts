@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { APPS, DEV_PORTS, HOME_DEV_PORT, appLinks } from '../src/apps';
+import { APPS, DEV_PORTS, HOME_DEV_PORT, appLinks, homeLink } from '../src/apps';
 
 describe('APPS', () => {
   it('lists every app with a unique id and dev port', () => {
@@ -24,5 +24,10 @@ describe('APPS', () => {
     expect(DEV_PORTS).toEqual(Object.fromEntries(APPS.map((a) => [a.id, a.devPort])));
     expect(appLinks('production').equity).toBe('../equity/');
     expect(appLinks('development').equity).toBe(`http://localhost:${DEV_PORTS.equity}/`);
+  });
+
+  it('points apps back to the home page one level up, or to its dev server', () => {
+    expect(homeLink('production')).toBe('../');
+    expect(homeLink('development')).toBe(`http://localhost:${HOME_DEV_PORT}/`);
   });
 });

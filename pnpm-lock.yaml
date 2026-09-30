@@ -441,6 +441,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@holdem-lab/assets':
+        specifier: workspace:*
+        version: link:../assets
       '@holdem-lab/engine':
         specifier: workspace:*
         version: link:../engine
