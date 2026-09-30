@@ -1,7 +1,14 @@
 import { RANKS, rankOf, suitOf, type Card } from '@holdem-lab/engine';
 import type { Fortune } from './fortune';
 
-export type ImageLabels = { tier: string; hand: string; date: string };
+export type ImageLabels = {
+  tier: string;
+  hand: string;
+  date: string;
+  comment: string;
+  handPower: string;
+  lucky: [string, string, string];
+};
 export type CanvasLike = {
   width: number;
   height: number;
@@ -18,6 +25,7 @@ const CREAM = '#f3ecd8';
 const CARD_BG = '#fbf7ec';
 const GOLD = '#d8b45a';
 const RED = '#c62828';
+const RED_ON_FELT = '#ff7a7a';
 const BLACK = '#1a1a1a';
 const GLYPHS = ['♠', '♥', '♦', '♣'];
 
@@ -54,8 +62,26 @@ export async function renderShareImage(
   return new Promise((resolve) => canvas.toBlob((b) => resolve(b), 'image/png'));
 }
 
-function draw(ctx: CanvasRenderingContext2D, f: Fortune, labels: ImageLabels) {
+function fitFont(ctx: CanvasRenderingContext2D, weight: number, px: number, text: string, maxW: number) {
+  do ctx.font = `${weight} ${px}px ${FONT}`;
+  while (ctx.measureText(text).width > maxW && --px > 12);
+}
 
+function wrap(ctx: CanvasRenderingContext2D, text: string, maxW: number): string[] {
+  const tokens = text.includes(' ') ? text.split(/(?<= )/) : Array.from(new Intl.Segmenter().segment(text), (s) => s.segment);
+  const lines: string[] = [];
+  let line = '';
+  for (const tok of tokens) {
+    if (line && ctx.measureText(line + tok).width > maxW) {
+      lines.push(line.trimEnd());
+      line = tok.trimStart();
+    } else line += tok;
+  }
+  if (line) lines.push(line.trimEnd());
+  return lines;
+}
+
+function draw(ctx: CanvasRenderingContext2D, f: Fortune, labels: ImageLabels) {
   const bg = ctx.createRadialGradient(W / 2, H * 0.3, 0, W / 2, H * 0.3, W * 0.75);
   bg.addColorStop(0, FELT_IN);
   bg.addColorStop(1, FELT_OUT);
@@ -65,28 +91,76 @@ function draw(ctx: CanvasRenderingContext2D, f: Fortune, labels: ImageLabels) {
   ctx.textAlign = 'left';
   ctx.fillStyle = CREAM;
   ctx.globalAlpha = 0.75;
-  ctx.font = `500 30px ${FONT}`;
-  ctx.fillText(`holdem-lab Fortune · ${labels.date}`, 64, 96);
+  ctx.font = `500 28px ${FONT}`;
+  ctx.fillText(`holdem-lab Fortune · ${labels.date}`, 64, 84);
   ctx.globalAlpha = 1;
 
-  const handW = 130;
-  f.hand.forEach((c, i) => drawCard(ctx, c, 64 + i * (handW + 16), 150, handW));
-  const boardCards = f.board.filter((c) => f.bestFive.includes(c));
-  const boardW = 84;
-  boardCards.forEach((c, i) => drawCard(ctx, c, 64 + i * (boardW + 12), 380, boardW));
+  const handW = 140;
+  f.hand.forEach((c, i) => drawCard(ctx, c, 64 + i * (handW + 16), 124, handW));
+  ctx.textAlign = 'left';
+  ctx.fillStyle = CREAM;
+  ctx.globalAlpha = 0.7;
+  ctx.font = `500 22px ${FONT}`;
+  ctx.fillText(labels.handPower, 384, 200);
+  ctx.globalAlpha = 1;
+  ctx.font = `800 44px ${FONT}`;
+  ctx.fillText(f.handClass, 384, 256);
+  ctx.font = `600 34px ${FONT}`;
+  ctx.fillText(`${Math.round(f.preflopEquity * 100)}%`, 384, 304);
+
+  const boardW = 88;
+  f.board.forEach((c, i) => {
+    ctx.globalAlpha = f.bestFive.includes(c) ? 1 : 0.35;
+    drawCard(ctx, c, 64 + i * (boardW + 12), 370, boardW);
+  });
+  ctx.globalAlpha = 1;
 
   ctx.textAlign = 'left';
   ctx.fillStyle = CREAM;
   ctx.globalAlpha = 0.75;
-  ctx.font = `500 28px ${FONT}`;
-  ctx.fillText('holdem-lab.com/fortune', 64, 580);
+  ctx.font = `500 26px ${FONT}`;
+  ctx.fillText('holdem-lab.com/fortune', 64, 588);
   ctx.globalAlpha = 1;
 
+  const colX = 616;
+  const colW = W - 64 - colX;
+  const mid = colX + colW / 2;
   ctx.textAlign = 'center';
   ctx.fillStyle = GOLD;
-  ctx.font = `800 150px ${FONT}`;
-  ctx.fillText(labels.tier, 900, 330);
+  fitFont(ctx, 800, 128, labels.tier, colW);
+  ctx.fillText(labels.tier, mid, 200);
   ctx.fillStyle = CREAM;
-  ctx.font = `600 48px ${FONT}`;
-  ctx.fillText(labels.hand, 900, 420);
+  ctx.font = `600 42px ${FONT}`;
+  ctx.fillText(labels.hand, mid, 264);
+
+  ctx.fillStyle = GOLD;
+  ctx.globalAlpha = 0.5;
+  ctx.fillRect(mid - 120, 296, 240, 2);
+  ctx.globalAlpha = 1;
+
+  ctx.fillStyle = CREAM;
+  ctx.font = `500 28px ${FONT}`;
+  wrap(ctx, labels.comment, colW)
+    .slice(0, 2)
+    .forEach((line, i) => ctx.fillText(line, mid, 350 + i * 40));
+
+  const gap = 14;
+  const boxW = (colW - gap * 2) / 3;
+  const values = [f.luckyPosition, GLYPHS[f.luckySuit], `${f.luckySize}%`];
+  labels.lucky.forEach((label, i) => {
+    const x = colX + i * (boxW + gap);
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+    ctx.beginPath();
+    ctx.roundRect(x, 440, boxW, 110, 16);
+    ctx.fill();
+    ctx.textAlign = 'center';
+    ctx.fillStyle = CREAM;
+    ctx.globalAlpha = 0.7;
+    fitFont(ctx, 500, 20, label, boxW - 20);
+    ctx.fillText(label, x + boxW / 2, 476);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = i === 1 && (f.luckySuit === 1 || f.luckySuit === 2) ? RED_ON_FELT : CREAM;
+    ctx.font = `700 40px ${FONT}`;
+    ctx.fillText(values[i], x + boxW / 2, 528);
+  });
 }

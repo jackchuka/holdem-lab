@@ -7,6 +7,7 @@ import { Toast } from './components/Toast';
 import { computeFortune, type Fortune, type FortuneKey } from './fortune';
 import { I18nProvider, categoryName, createTranslator, formatDate } from './i18n/i18n';
 import type { UiKey } from './i18n/messages';
+import { COMMENTS } from './i18n/texts';
 import { loadSettings, saveSettings, THEMES } from './settings';
 import { downloadBlob, shareFortune, type ShareNavigator } from './share';
 import { renderShareImage } from './shareImage';
@@ -71,9 +72,17 @@ export function App({ store, today: getToday, initial, badUrl, reducedMotion, na
 
   const tierLabel = t(`tier.${fortune.tier}`);
   const handLabel = categoryName(fortune.category, locale);
+  const comment = COMMENTS[locale][fortune.tier][fortune.commentIndex];
   const imageLabels = useMemo(
-    () => ({ tier: tierLabel, hand: handLabel, date: view.date.replaceAll('-', '/') }),
-    [tierLabel, handLabel, view.date],
+    () => ({
+      tier: tierLabel,
+      hand: handLabel,
+      date: view.date.replaceAll('-', '/'),
+      comment,
+      handPower: t('image.handPower'),
+      lucky: [t('lucky.position'), t('lucky.suit'), t('lucky.size')] as [string, string, string],
+    }),
+    [tierLabel, handLabel, view.date, comment, t],
   );
 
   useEffect(() => {
