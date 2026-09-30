@@ -18,6 +18,12 @@ describe('renderSiteIndex', () => {
     expect(html).not.toContain('<!-- apps -->');
   });
 
+  it('links cards through appUrl, e.g. to dev servers', () => {
+    const html = renderSiteIndex(TEMPLATE, APPS, { beaconSrc: SRC, appUrl: (id) => `http://localhost:9/${id}-x/` });
+    expect(html).toContain('<a href="http://localhost:9/b-x/">');
+    expect(html).toContain('<img src="http://localhost:9/b-x/icon.svg" alt="" />');
+  });
+
   it('escapes text', () => {
     const html = renderSiteIndex(TEMPLATE, APPS, { beaconSrc: SRC });
     expect(html).toContain('&lt;アリ&gt; &amp; &quot;蟻&quot; / Ant&#39;s app');

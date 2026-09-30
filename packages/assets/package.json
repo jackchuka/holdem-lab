@@ -12,6 +12,7 @@
     "./apps": "./src/apps.ts"
   },
   "scripts": {
+    "dev": "node bin/dev-site.mjs",
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p .",
     "brand": "node bin/element-icon.mjs 0 Hl brand/holdem-lab.svg"

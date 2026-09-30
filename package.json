@@ -9,7 +9,7 @@
   },
   "packageManager": "pnpm@12.6.0",
   "scripts": {
-    "dev": "pnpm --filter \"./apps/*\" --parallel dev",
+    "dev": "pnpm -r --parallel --if-present dev",
     "build": "pnpm -r --if-present build",
     "test": "pnpm -r --if-present test",
     "typecheck": "pnpm -r --if-present typecheck",
