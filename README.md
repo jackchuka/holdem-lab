@@ -23,6 +23,8 @@
 **配られた7枚で、今日を占う。**<br>
 毎日1回、手札2枚とボード5枚でできた役から吉凶を決める、ポーカーのおみくじ PWA。
 
+<img src="docs/assets/fortune-reveal.png" width="30%" alt="今日の運勢">
+
 **[Fortune を開く](https://holdem-lab.com/fortune/)**。
 
 - **毎日1回・7枚で占う**
