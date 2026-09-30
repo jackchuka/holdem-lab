@@ -1,5 +1,5 @@
 import { RANKS, fullDeck, rankOf, suitOf, type Card } from './cards';
-import { categoryOf, evaluate, type HandCategory, type HandRank } from './evaluator';
+import { HandCategory, categoryOf, evaluate, type HandRank } from './evaluator';
 
 export type PatternCard = { rank: number | null; suit: number | null };
 export type HandPattern = [PatternCard, PatternCard];
@@ -100,4 +100,18 @@ export function nutLadder(board: readonly Card[], depth = 6): NutTier[] {
     tiers.push({ category, patterns: tierPatterns(tier, deck, isPlaced) });
   }
   return tiers;
+}
+
+// Above the ceiling the result is only a lower bound: callers that need one category can stop early.
+export function nutCategory(board: readonly Card[], ceiling: HandCategory = HandCategory.StraightFlush): HandCategory {
+  const onBoard = new Set(board);
+  const deck = fullDeck().filter((c) => !onBoard.has(c));
+  let best = 0;
+  for (let i = 0; i < deck.length; i++) {
+    for (let j = i + 1; j < deck.length; j++) {
+      best = Math.max(best, evaluate([deck[i], deck[j], ...board]));
+      if (categoryOf(best) > ceiling) return categoryOf(best);
+    }
+  }
+  return categoryOf(best);
 }

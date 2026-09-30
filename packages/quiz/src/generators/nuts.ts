@@ -1,6 +1,7 @@
 import {
   HandCategory,
   fullDeck,
+  nutCategory,
   nutLadder,
   patternCardToString,
   patternToString,
@@ -112,11 +113,12 @@ function ladderQuestion(itemKey: string, board: Card[], ladder: NutTier[], answe
   };
 }
 
-function dealBoard(rng: Rng, size: number, accept: (ladder: NutTier[]) => boolean): { board: Card[]; ladder: NutTier[] } {
+function dealBoard(rng: Rng, size: number, category?: HandCategory): { board: Card[]; ladder: NutTier[] } {
   for (let i = 0; i < MAX_DEALS; i++) {
     const board = rng.shuffle(fullDeck()).slice(0, size);
+    if (category !== undefined && nutCategory(board, category) !== category) continue;
     const ladder = nutLadder(board);
-    if (playable(ladder) && accept(ladder)) return { board, ladder };
+    if (playable(ladder)) return { board, ladder };
   }
   throw new Error('could not deal a matching nuts board');
 }
@@ -125,30 +127,36 @@ const secondQuestion = (street: Street, board: Card[], ladder: NutTier[], rng: R
   ladderQuestion(`nuts2:${street}`, board, ladder, 1, text('nuts.second.prompt'), { kind: 'none' }, rng);
 
 function nutsQuestion(street: Street, key: NutCategoryKey, rng: Rng): Question {
-  const { board, ladder } = dealBoard(rng, BOARD_SIZE[street], (l) => l[0].category === NUT_CATEGORY_KEYS[key]);
+  const { board, ladder } = dealBoard(rng, BOARD_SIZE[street], NUT_CATEGORY_KEYS[key]);
   const q = ladderQuestion(`nuts:${street}:${key}`, board, ladder, 0, text('nuts.prompt'), { kind: 'none' }, rng);
   return { ...q, followUp: secondQuestion(street, board, ladder, rng) };
 }
 
 function nutsNextQuestion(street: 'turn' | 'river', key: NutCategoryKey, rng: Rng): Question {
-  const size = BOARD_SIZE[street];
+  const target = NUT_CATEGORY_KEYS[key];
   for (let i = 0; i < MAX_DEALS; i++) {
-    const board = rng.shuffle(fullDeck()).slice(0, size);
-    const ladder = nutLadder(board);
-    if (!playable(ladder) || ladder[0].category !== NUT_CATEGORY_KEYS[key]) continue;
-    const prev = nutLadder(board.slice(0, -1), 1);
-    if (boardPlays(prev) || topKey(prev) === topKey(ladder)) continue;
-    const card = board[size - 1];
-    const context: Context = {
-      kind: 'prevNuts',
-      pattern: prev[0].patterns[0],
-      label: text('nuts.prev', { street: streetText(PREV_STREET[street]) }),
-    };
-    const prompt = text('nutsnext.prompt', {
-      street: streetText(street),
-      card: patternCardToString({ rank: rankOf(card), suit: suitOf(card) }),
-    });
-    return ladderQuestion(`nutsnext:${street}:${key}`, board, ladder, 0, prompt, context, rng);
+    const deck = rng.shuffle(fullDeck());
+    const prevBoard = deck.slice(0, BOARD_SIZE[street] - 1);
+    if (nutCategory(prevBoard, target) > target) continue;
+    let prev: NutTier[] | undefined;
+    for (const card of deck.slice(prevBoard.length)) {
+      const board = [...prevBoard, card];
+      if (nutCategory(board, target) !== target) continue;
+      prev ??= nutLadder(prevBoard, 1);
+      if (boardPlays(prev)) break;
+      const ladder = nutLadder(board);
+      if (!playable(ladder) || topKey(prev) === topKey(ladder)) continue;
+      const context: Context = {
+        kind: 'prevNuts',
+        pattern: prev[0].patterns[0],
+        label: text('nuts.prev', { street: streetText(PREV_STREET[street]) }),
+      };
+      const prompt = text('nutsnext.prompt', {
+        street: streetText(street),
+        card: patternCardToString({ rank: rankOf(card), suit: suitOf(card) }),
+      });
+      return ladderQuestion(`nutsnext:${street}:${key}`, board, ladder, 0, prompt, context, rng);
+    }
   }
   throw new Error('could not deal a board where the nuts change');
 }
@@ -165,7 +173,7 @@ export const nutsGenerator: Generator = {
     const second = /^nuts2:(flop|turn|river)$/.exec(itemKey);
     if (second) {
       const street = second[1] as Street;
-      const { board, ladder } = dealBoard(rng, BOARD_SIZE[street], () => true);
+      const { board, ladder } = dealBoard(rng, BOARD_SIZE[street]);
       return secondQuestion(street, board, ladder, rng);
     }
     const m = /^(nuts|nutsnext):(flop|turn|river):(\w+)$/.exec(itemKey);

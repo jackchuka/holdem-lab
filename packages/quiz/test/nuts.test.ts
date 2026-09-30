@@ -111,3 +111,11 @@ describe('nutMistakeKey', () => {
     expect(nutMistakeKey(HandCategory.Trips, HandCategory.TwoPair)).toBe('nuts.miss.weaker');
   });
 });
+
+describe('nuts generation time', () => {
+  it('finds boards for the rarest keys quickly', async () => {
+    const start = performance.now();
+    for (let seed = 0; seed < 10; seed++) await nutsGenerator.generate('nutsnext:river:trips', createRng(seed), deps);
+    expect((performance.now() - start) / 10).toBeLessThan(100);
+  }, 60_000);
+});

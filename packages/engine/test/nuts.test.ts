@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { parseCards } from '../src/cards';
+import { cardsToString, fullDeck, parseCards } from '../src/cards';
+import { createRng } from '../src/rng';
 import { HandCategory } from '../src/evaluator';
-import { matchesPattern, nutLadder, patternCardToString, patternToString } from '../src/nuts';
+import { matchesPattern, nutCategory, nutLadder, patternCardToString, patternToString } from '../src/nuts';
 
 const top = (board: string, n = 3) =>
   nutLadder(parseCards(board))
@@ -61,5 +62,22 @@ describe('nutLadder', () => {
 
   it('stops at depth when the categories already differ', () => {
     expect(nutLadder(parseCards('KsKd7c'), 3)).toHaveLength(3);
+  });
+});
+
+describe('nutCategory', () => {
+  it('matches the category of the first tier', () => {
+    const rng = createRng(42);
+    for (let i = 0; i < 200; i++) {
+      const board = rng.shuffle(fullDeck()).slice(0, 3 + (i % 3));
+      expect(nutCategory(board), cardsToString(board)).toBe(nutLadder(board)[0].category);
+    }
+  });
+
+  it('stops early once the nuts exceed the ceiling', () => {
+    const board = parseCards('Kh7h2h4h9s');
+    expect(nutCategory(board)).toBe(HandCategory.Flush);
+    expect(nutCategory(board, HandCategory.Trips)).toBeGreaterThan(HandCategory.Trips);
+    expect(nutCategory(parseCards('Ks7d2c'), HandCategory.Trips)).toBe(HandCategory.Trips);
   });
 });
