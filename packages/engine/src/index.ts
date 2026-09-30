@@ -5,3 +5,4 @@ export * from './equity';
 export * from './outs';
 export * from './draws';
 export * from './multiEquity';
+export * from './nuts';
