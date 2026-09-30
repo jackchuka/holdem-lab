@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { RANKS, cardsToString, rankOf, suitOf } from '@holdem-lab/engine';
+import { HomeLink } from '@holdem-lab/ui';
 import { NamePanel } from './components/NamePanel';
 import { Result } from './components/Result';
 import { Reveal, type Phase } from './components/Reveal';
@@ -160,6 +161,7 @@ export function App({ store, today: getToday, initial, badUrl, reducedMotion, na
     <I18nProvider value={translator}>
       <main className="app">
         <header className="app-header">
+          <HomeLink href={__HOME_LINK__} />
           <img src="icon.svg" alt="" />
           <h1>{t('app.title')}</h1>
           <span className="spacer" />

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { summarize } from '@holdem-lab/engine';
-import { BoardRow } from '@holdem-lab/ui';
+import { BoardRow, HomeLink } from '@holdem-lab/ui';
 import type { Coordinator } from './compute/coordinator';
 import { useEquity, type EquityRequest } from './compute/useEquity';
 import { AnalysisTabs } from './components/AnalysisTabs';
@@ -95,6 +95,7 @@ export function App({ coordinator, presets, initial, badUrl }: Props) {
     <I18nProvider value={translator}>
       <div className="app">
         <header className="app-header">
+          <HomeLink href={__HOME_LINK__} />
           <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" />
           <h1>Equity</h1>
           <span className="spacer" />

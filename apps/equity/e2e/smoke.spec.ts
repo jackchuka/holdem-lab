@@ -23,3 +23,8 @@ test('opens fresh with a notice on a broken link', async ({ page }) => {
   await expect(page.getByRole('status')).toContainText('URL を読み込めなかった');
   await expect(page.getByTestId('equity-0')).toHaveText('—');
 });
+
+test('links back to the holdem-lab home page', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('link', { name: 'holdem-lab' })).toHaveAttribute('href', 'http://localhost:5170/');
+});

@@ -23,3 +23,8 @@ test('remembers speed and view across reloads', async ({ page }) => {
   await expect(page.getByRole('button', { name: '0.25×' })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByRole('button', { name: '向かい' })).toHaveAttribute('aria-pressed', 'true');
 });
+
+test('links back to the holdem-lab home page', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('link', { name: 'holdem-lab' })).toHaveAttribute('href', 'http://localhost:5170/');
+});

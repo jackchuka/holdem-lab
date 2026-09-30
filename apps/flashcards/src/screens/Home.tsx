@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { categoryText, type Category } from '@holdem-lab/quiz';
+import { HomeLink } from '@holdem-lab/ui';
 import { useI18n } from '../i18n/i18n';
 import { computeStreak } from '../stats/stats';
 import type { Store } from '../storage/store';
@@ -46,10 +47,13 @@ export function Home({ store, settings, available, onSettings, onStart }: Props)
 
   return (
     <section className="app-main">
-      <h1 className="title brand">
-        <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" />
-        Flashcards
-      </h1>
+      <div className="brand">
+        <HomeLink href={__HOME_LINK__} />
+        <h1 className="title brand">
+          <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" />
+          Flashcards
+        </h1>
+      </div>
       <div className="panel stats-row">
         <div>
           <div className="label">{t('home.due')}</div>

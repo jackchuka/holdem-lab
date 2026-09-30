@@ -35,3 +35,8 @@ test('answers a nuts question and reveals the nuts in the hero slots', async ({ 
   await expect(hero.locator('svg')).toHaveCount(2);
   expect(await hero.boundingBox()).toEqual(before);
 });
+
+test('links back to the holdem-lab home page', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('link', { name: 'holdem-lab' })).toHaveAttribute('href', 'http://localhost:5170/');
+});
