@@ -6,7 +6,11 @@ test('reveals, remembers the day and links to Equity', async ({ page }) => {
   const tier = page.getByTestId('tier');
   await expect(tier).toBeVisible({ timeout: 5000 });
   const first = await tier.textContent();
-  await expect(page.getByRole('link', { name: 'Equity で検証' })).toHaveAttribute('href', /^\.\.\/equity\/\?b=([2-9TJQKA][shdc]){5}&p=([2-9TJQKA][shdc]){2}&p=x$/);
+  await expect(page.getByRole('link', { name: 'Equity で検証' })).toHaveAttribute(
+    'href',
+    /^http:\/\/localhost:5174\/\?b=([2-9TJQKA][shdc]){5}&p=([2-9TJQKA][shdc]){2}&p=x$/,
+  );
+  await expect(page.getByRole('link', { name: 'Flashcards で練習' })).toHaveAttribute('href', 'http://localhost:5173/');
 
   await page.reload();
   await expect(page.getByRole('button', { name: '運勢を見る' })).toHaveCount(0);
