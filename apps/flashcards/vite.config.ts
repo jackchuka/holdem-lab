@@ -1,3 +1,4 @@
+import { DEV_PORTS } from '@holdem-lab/assets/apps';
 import { cloudflareAnalytics } from '@holdem-lab/assets/vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
@@ -5,6 +6,7 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
+  server: { port: DEV_PORTS.flashcards, strictPort: true },
   plugins: [
     react(),
     cloudflareAnalytics(process.env.CF_BEACON_TOKEN),

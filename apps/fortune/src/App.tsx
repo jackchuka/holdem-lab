@@ -144,7 +144,7 @@ export function App({ store, today: getToday, initial, badUrl, reducedMotion, na
         ? t('view.named', { name: view.key.name, date })
         : t('view.shared', { date });
   const nameView = view.source !== 'mine' && view.key.kind === 'name' ? view.key : null;
-  const equityHref = `../equity/?b=${cardsToString(fortune.board)}&p=${cardsToString(fortune.hand)}&p=x`;
+  const equityHref = `${__APP_LINKS__.equity}?b=${cardsToString(fortune.board)}&p=${cardsToString(fortune.hand)}&p=x`;
   const nextTheme = THEMES[(THEMES.indexOf(settings.theme) + 1) % THEMES.length];
 
   return (
@@ -203,7 +203,7 @@ export function App({ store, today: getToday, initial, badUrl, reducedMotion, na
               <a className="secondary" href={equityHref}>
                 {t('action.equity')}
               </a>
-              <a className="secondary" href="../flashcards/">
+              <a className="secondary" href={__APP_LINKS__.flashcards}>
                 {t('action.flashcards')}
               </a>
             </div>
