@@ -1,0 +1,27 @@
+{
+  "name": "@holdem-lab/home",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p .",
+    "e2e": "playwright test",
+    "icons": "element-icon 0 Hl public/icon.svg && pwa-assets-generator",
+    "gen:og": "node scripts/gen-og.mjs"
+  },
+  "dependencies": {
+    "@holdem-lab/quiz": "workspace:*",
+    "@holdem-lab/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@holdem-lab/assets": "workspace:*",
+    "@types/node": "^24.0.0",
+    "jsdom": "^30.1.1",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.1"
+  }
+}
