@@ -24,12 +24,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Build each app under /<app>/
         run: |
-          mkdir -p site
-          cp site-root/index.html packages/assets/brand/holdem-lab.svg site/
-          if [ -n "$CF_BEACON_TOKEN" ]; then
-            beacon="<script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{\"token\":\"${CF_BEACON_TOKEN}\"}'></script>"
-            sed -i "s|</body>|${beacon}</body>|" site/index.html
-          fi
+          node scripts/build-site-root.mjs site
           for dir in apps/*/; do
             app=$(basename "$dir")
             BASE_PATH="${PAGES_BASE}/${app}/" pnpm --filter "./apps/${app}" build

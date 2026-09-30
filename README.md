@@ -100,7 +100,7 @@
 | `packages/ranges` | レンジ表記（`A2s+` など）の展開と検証、6-max 100bb RFI データ、重み付きレンジの表記の解析と生成 |
 | `packages/quiz` | 問題の型、4分野の問題生成、採点、問題文の日英辞書 |
 | `packages/ui` | カード・ボードの SVG コンポーネントとテーマのトークン、カードピッカーとレンジグリッド |
-| `packages/assets` | ロゴとアイコンの生成（周期表のマスの形。`element-icon <番号> <記号> <出力.svg>`） |
+| `packages/assets` | ロゴとアイコンの生成（周期表のマスの形。`element-icon <番号> <記号> <出力.svg>`）、アプリ一覧（`src/apps.ts`）とトップページの生成 |
 
 ## 開発
 
@@ -124,7 +124,7 @@ pnpm --filter @holdem-lab/flashcards dev   # 1つだけ起動
 | `pnpm e2e` | E2E テスト（Playwright。初回は `pnpm exec playwright install chromium`） |
 | `pnpm check-licenses` | アプリに同梱する依存パッケージのライセンス確認 |
 
-`main` への push で GitHub Pages にデプロイされる。`apps/<アプリ名>` はそれぞれ `https://holdem-lab.com/<アプリ名>/` に置かれる。アプリを追加したら、ルートの一覧ページ `site-root/index.html` にリンクを足し、次の番号と2文字の記号でアイコンを作る（学習用は 1 からの連番、遊び系は 100 からの連番）（例: `element-icon 2 Eq public/icon.svg`。Flashcards は `pnpm --filter @holdem-lab/flashcards icons` で PNG まで生成する）。
+`main` への push で GitHub Pages にデプロイされる。`apps/<アプリ名>` はそれぞれ `https://holdem-lab.com/<アプリ名>/` に置かれる。トップページ（`site-root/index.html` を雛形に `scripts/build-site-root.mjs` が生成）のアプリ一覧と開発サーバーのポートは `packages/assets/src/apps.ts` の表から作られる。アプリを追加したら、この表に1行足し、次の番号と2文字の記号でアイコンを作る（学習用は 1 からの連番、遊び系は 100 からの連番）（例: `element-icon 2 Eq public/icon.svg`。Flashcards は `pnpm --filter @holdem-lab/flashcards icons` で PNG まで生成する）。
 
 ## レンジデータについて
 
