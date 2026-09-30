@@ -1,16 +1,19 @@
-import type { Card, Rng } from '@holdem-lab/engine';
+import type { Card, HandPattern, Rng } from '@holdem-lab/engine';
 import type { Position, RangeSet } from '@holdem-lab/ranges';
 import type { Text } from './i18n/text';
 
-export type Category = 'equity' | 'outs' | 'range' | 'potodds';
-export const CATEGORIES: Category[] = ['equity', 'outs', 'range', 'potodds'];
+export type Category = 'equity' | 'outs' | 'range' | 'potodds' | 'nuts';
+export const CATEGORIES: Category[] = ['equity', 'outs', 'range', 'potodds', 'nuts'];
 
 export type Context =
   | { kind: 'villain'; cards: Card[]; label?: Text }
   | { kind: 'position'; position: Position }
-  | { kind: 'pot'; pot: number; bet: number };
+  | { kind: 'pot'; pot: number; bet: number }
+  | { kind: 'none' }
+  | { kind: 'prevNuts'; pattern: HandPattern; label: Text };
 
-export type Choice = { label: string; mistake?: Text };
+export type Choice = { label: string; mistake?: Text; pattern?: HandPattern };
+
 export type Answer = { kind: 'numeric'; value: number; tolerance: number } | { kind: 'choice'; correct: number; alsoCorrect?: number[] };
 export type Explanation = {
   headline: Text;

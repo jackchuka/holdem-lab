@@ -48,5 +48,18 @@ export function ContextView({ context }: { context: Context }) {
           </div>
         </div>
       );
+    case 'prevNuts':
+      return (
+        <>
+          <span className="zone-label">{text(context.label)}</span>
+          <div className="hl-row" data-testid="prev-nuts">
+            {context.pattern.map((p, i) => (
+              <PlayingCard key={i} pattern={p} size="sm" />
+            ))}
+          </div>
+        </>
+      );
+    case 'none':
+      return null;
   }
 }

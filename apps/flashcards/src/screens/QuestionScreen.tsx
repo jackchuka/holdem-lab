@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { categoryText, type Question, type Response } from '@holdem-lab/quiz';
-import { BoardRow, HeroHand } from '@holdem-lab/ui';
+import { BoardRow, HeroHand, PlayingCard } from '@holdem-lab/ui';
 import { useI18n } from '../i18n/i18n';
 import type { AnswerResult } from '../session/runner';
 import { ContextView } from './ContextView';
@@ -35,6 +35,8 @@ export function QuestionScreen({ question, progress, result, onAnswer, onNext, a
   };
 
   const pct = progress.total ? (progress.index / progress.total) * 100 : 0;
+  const reveal =
+    result && question.stage.hero.length === 0 && question.answer.kind === 'choice' ? question.choices?.[question.answer.correct]?.pattern : undefined;
 
   return (
     <main className="stage">
@@ -61,7 +63,7 @@ export function QuestionScreen({ question, progress, result, onAnswer, onNext, a
       </div>
       <div className="zone zone-hero">
         <span className="zone-label">YOU</span>
-        <HeroHand cards={question.stage.hero} />
+        <HeroHand cards={question.stage.hero} pattern={reveal} />
       </div>
       {result ? (
         <ResultPanel result={result} onNext={onNext} advancing={advancing} />
@@ -91,8 +93,14 @@ export function QuestionScreen({ question, progress, result, onAnswer, onNext, a
             ) : (
               <div className="choices">
                 {question.choices!.map((c, i) => (
-                  <button key={c.label} className="choice" disabled={answered} onClick={() => submit({ choiceIndex: i })}>
-                    {c.label}
+                  <button
+                    key={c.label}
+                    className={c.pattern ? 'choice choice--cards' : 'choice'}
+                    aria-label={c.pattern ? c.label : undefined}
+                    disabled={answered}
+                    onClick={() => submit({ choiceIndex: i })}
+                  >
+                    {c.pattern ? c.pattern.map((p, j) => <PlayingCard key={j} pattern={p} size="sm" />) : c.label}
                   </button>
                 ))}
               </div>

@@ -27,6 +27,12 @@ describe('quiz i18n', () => {
     expect(renderText(t, 'en')).toBe('9 outs');
   });
 
+  it('renders texts nested in params', () => {
+    const t = text('nuts.headline', { hand: 'A♥ x♥', name: text('hand.5') });
+    expect(renderText(t, 'ja')).toBe('A♥ x♥：フラッシュ');
+    expect(renderText(t, 'en')).toBe('A♥ x♥: Flush');
+  });
+
   it('detects the locale from the first browser language', () => {
     expect(detectLocale(['ja-JP', 'en-US'])).toBe('ja');
     expect(detectLocale(['ja'])).toBe('ja');

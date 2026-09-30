@@ -76,6 +76,7 @@ button:disabled { cursor: default; }
 .zone-answer { justify-content: flex-end; gap: 10px; }
 .choices { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .choice { height: 56px; border-radius: 14px; background: var(--btn); border: 1px solid var(--btn-border); font-weight: 800; font-size: 18px; }
+.choice--cards { display: flex; align-items: center; justify-content: center; gap: 6px; }
 .slider-value { font-size: 40px; font-weight: 800; }
 .slider { width: 100%; accent-color: var(--accent); }
 .result-panel { grid-row: 5 / 7; background: var(--panel); color: var(--panel-fg); border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; overflow: auto; min-height: 0; }
