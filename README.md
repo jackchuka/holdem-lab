@@ -87,6 +87,20 @@
   - 推移: プリフロップからリバーまでの勝率の折れ線
 - **URL で共有**: 入力はすべて URL に入るので、ブックマークや共有でそのまま再現できる
 
+### <img src="apps/chips/public/icon.svg" width="28" align="top" alt=""> Chips
+
+**チップトリックを、コマ送りで。**<br>
+ポーカーチップの手遊びを、チップの動きと指の力点の 3D アニメーションで分解して見せる練習用 PWA。
+
+<img src="docs/assets/chips-riffle.png" width="23%" alt="リフル"> <img src="docs/assets/chips-thumb-flip.png" width="23%" alt="サムフリップ"> <img src="docs/assets/chips-chip-twist.png" width="23%" alt="チップツイスト"> <img src="docs/assets/chips-knuckle-roll.png" width="23%" alt="ナックルロール">
+
+**[Chips を開く](https://holdem-lab.com/chips/)**。
+
+- **4つの技**: リフル、サムフリップ、チップツイスト、ナックルロール
+- **力点が見える**: 指先のマーカーは指ごとに色分けし、押している間は周りに赤い輪が付く。チップは半透明で、下にある指も見える
+- **分解して見る**: ステップごとの字幕と ⏮ ⏭ でのステップ送り、0.25×・0.5× のスロー再生、自分・正面・斜め・真上・向かいの5視点
+- **左利き対応**: 左右反転ボタンで鏡像にする
+
 ## 構成
 
 計算・レンジ・問題生成は UI に依存しないパッケージに分けてあり、アプリを増やすときはこれを使い回す。
@@ -96,6 +110,7 @@
 | `apps/flashcards` | Flashcards（React + Vite の PWA） |
 | `apps/equity` | Equity（React + Vite の PWA） |
 | `apps/fortune` | Fortune（React + Vite の PWA） |
+| `apps/chips` | Chips（React + Vite + three.js の PWA） |
 | `packages/engine` | カード表現、5〜7枚の役判定、シード付き乱数、モンテカルロ勝率、アウツ、ドロー分類、多人数・レンジ対応の勝率セッション（全通り／モンテカルロ） |
 | `packages/ranges` | レンジ表記（`A2s+` など）の展開と検証、6-max 100bb RFI データ、重み付きレンジの表記の解析と生成 |
 | `packages/quiz` | 問題の型、4分野の問題生成、採点、問題文の日英辞書 |
