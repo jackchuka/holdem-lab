@@ -23,7 +23,7 @@
 **勝率・アウツ・レンジ・ポットオッズを、指が覚えるまで。**<br>
 数字と判断を間隔反復のフラッシュカードで身につける PWA。
 
-<img src="docs/assets/home.png" width="30%" alt="ホーム"> <img src="docs/assets/question.png" width="30%" alt="出題"> <img src="docs/assets/result.png" width="30%" alt="解説">
+<img src="docs/assets/flashcards-home.png" width="30%" alt="ホーム"> <img src="docs/assets/flashcards-question.png" width="30%" alt="出題"> <img src="docs/assets/flashcards-result.png" width="30%" alt="解説">
 
 **[Flashcards を開く](https://holdem-lab.com/flashcards/)**。スマホで開いて「ホーム画面に追加」すると、オフラインでも使える。
 
