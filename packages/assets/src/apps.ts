@@ -3,6 +3,7 @@ export const APPS = [
   { id: 'fortune', title: 'Fortune', ja: '配られた7枚で占う今日のポーカー運勢', en: 'Daily poker fortune', devPort: 5175 },
   { id: 'flashcards', title: 'Flashcards', ja: '勝率・アウツ・レンジ・ポットオッズの暗記カード', en: "Hold'em flashcards", devPort: 5173 },
   { id: 'equity', title: 'Equity', ja: 'ハンドとレンジの勝率計算機', en: 'Hand and range equity calculator', devPort: 5174 },
+  { id: 'chips', title: 'Chips', ja: 'ポーカーチップの手遊びを 3D で分解して練習', en: 'Poker chip tricks, step by step in 3D', devPort: 5176 },
 ] as const;
 
 export const HOME_DEV_PORT = 5170;
