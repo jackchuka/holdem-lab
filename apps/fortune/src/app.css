@@ -1,0 +1,21 @@
+html, body, #root { margin: 0; min-height: 100%; }
+body {
+  background-color: var(--bg-solid);
+  background-image: var(--bg);
+  background-attachment: fixed;
+  color: var(--fg);
+  font-family: -apple-system, system-ui, 'Hiragino Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+button:disabled { cursor: default; }
+
+.app { max-width: 480px; margin: 0 auto; padding: calc(12px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom)); box-sizing: border-box; }
+.app-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.app-header img { width: 32px; height: 32px; border-radius: 8px; }
+.app-header h1 { font-size: 18px; font-weight: 800; margin: 0; }
+.spacer { flex: 1; }
+.icon-button { background: none; border: 0; font-size: 20px; padding: 4px 8px; color: var(--muted); }
+.chip { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--btn-border); background: transparent; font-size: 13px; }
+.chip[aria-pressed='true'] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); font-weight: 700; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translateX(-50%); max-width: calc(100% - 32px); padding: 10px 16px; border-radius: 12px; background: var(--panel); color: var(--panel-fg); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); font-size: 13px; z-index: 20; }

@@ -3,7 +3,7 @@ const GOLD = '#d8b45a';
 const STROKE = 34;
 const GAP = 26;
 // F is open below its middle bar, so a following lowercase letter can tuck in closer.
-const KERNING = { Fc: -20 };
+const KERNING = { Fc: -20, Fo: -20 };
 
 // Stroke outlines drawn on a baseline at y=0 with a 190-unit cap height.
 // Lowercase ascenders rise above the cap height and "l" carries a tail so it never reads as "I".
@@ -13,6 +13,7 @@ const GLYPHS = {
   E: { width: 108, d: 'M17 -190V0M0 -173H108M17 -96H94M0 -17H108' },
   l: { width: 62, d: 'M17 -222V-44A44 44 0 0 0 61 0' },
   c: { width: 122, d: 'M100.1 -105.9A51 51 0 1 0 100.1 -30.1' },
+  o: { width: 132, d: 'M66 -119A51 51 0 1 0 66 -17A51 51 0 1 0 66 -119Z' },
   q: { width: 134, d: 'M66 -119A51 51 0 1 0 66 -17A51 51 0 1 0 66 -119ZM117 -119V60' },
   0: { width: 120, d: 'M60 -173A43 78 0 0 1 60 -17A43 78 0 0 1 60 -173Z' },
   2: { width: 110, d: 'M10 -145Q10 -190 55 -190Q100 -190 100 -145Q100 -110 60 -70L8 0H104' },
