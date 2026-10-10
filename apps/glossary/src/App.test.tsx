@@ -43,7 +43,7 @@ describe('App', () => {
     fireEvent.click(screen.getByRole('button', { name: '日 → 英' }));
     expect(JSON.parse(localStorage.getItem(KEY)!).direction).toBe('ja-en');
     fireEvent.click(screen.getByRole('button', { name: '閉じる' }));
-    const first = ENTRIES.find((e) => screen.getByTestId('card-front').textContent!.includes(e.term.ja));
+    const first = ENTRIES.find((e) => screen.getByTestId('card-front').textContent?.includes(e.term.ja));
     expect(first).toBeTruthy();
   });
 

@@ -69,6 +69,26 @@
   - 学習履歴はブラウザの IndexedDB に保存し、サーバーには送らない
   - JSON で書き出し・読み込みでき、統計や学習データのリセットもできる
 
+### <img src="apps/glossary/public/icon.svg" width="28" align="top" alt=""> Glossary
+
+**ポーカー用語を、英語と日本語で。**<br>
+3bet や SPR など約100のポーカー用語を、めくるカードと検索できる一覧で覚える単語帳 PWA。
+
+<img src="docs/assets/glossary-cards.png" width="30%" alt="カードの裏"> <img src="docs/assets/glossary-list.png" width="30%" alt="一覧">
+
+**[Glossary を開く](https://holdem-lab.com/glossary/)**。
+
+- **5つのカテゴリ**: ポジション、アクション、ハンド・ボード、数字、スラング
+- **めくるカード**
+  - 表に用語、裏に反対の言語の用語と読み、意味、例文（英語と日本語訳）
+  - 向きは英→日、日→英、ランダムから選ぶ
+  - スワイプ、←→ キー、ボタンで前後に移動する
+- **一覧と検索**
+  - 英語、日本語、読み、別表記、説明のどれでも引ける。`3-bet`、`3bet`、`すりーべっと` はどれも同じ用語にヒットする
+  - アルファベットの見出しつき
+- **用語は1語1オブジェクト**: `apps/glossary/src/terms/` のカテゴリのファイルに追記するだけで増やせる
+- **日本語／英語**、4つのテーマ
+
 ### <img src="apps/equity/public/icon.svg" width="28" align="top" alt=""> Equity
 
 **2〜9人のハンドとレンジから、勝率をその場で。**<br>
@@ -110,6 +130,7 @@
 | パス | 内容 |
 | --- | --- |
 | `apps/flashcards` | Flashcards（React + Vite の PWA） |
+| `apps/glossary` | Glossary（React + Vite の PWA） |
 | `apps/equity` | Equity（React + Vite の PWA） |
 | `apps/home` | トップページ（Vite + TypeScript。アプリ一覧は `packages/assets/src/apps.ts` からビルド時に生成） |
 | `apps/fortune` | Fortune（React + Vite の PWA） |
