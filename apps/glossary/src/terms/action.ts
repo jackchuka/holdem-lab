@@ -85,7 +85,7 @@ export const ACTION: Term[] = [
     en: '3-bet',
     ja: 'スリーベット',
     kana: 'すりーべっと',
-    aliases: ['3bet', 'three-bet', 'reraise'],
+    aliases: ['3bet', 'three-bet', 'reraise', '3ベット'],
     def: {
       ja: 'オープンレイズに対して、さらにレイズすること。プリフロップでは3回目のベットにあたる。',
       en: 'A re-raise over an open raise; preflop it is the third bet, counting the blind.',
@@ -97,7 +97,7 @@ export const ACTION: Term[] = [
     en: '4-bet',
     ja: 'フォーベット',
     kana: 'ふぉーべっと',
-    aliases: ['4bet', 'four-bet'],
+    aliases: ['4bet', 'four-bet', '4ベット'],
     def: {
       ja: 'スリーベットに対して、さらにレイズすること。',
       en: 'A re-raise over a 3-bet.',
@@ -109,7 +109,7 @@ export const ACTION: Term[] = [
     en: '5-bet',
     ja: 'ファイブベット',
     kana: 'ふぁいぶべっと',
-    aliases: ['5bet', 'five-bet'],
+    aliases: ['5bet', 'five-bet', '5ベット'],
     def: {
       ja: 'フォーベットに対して、さらにレイズすること。100bb ではたいていオールインになる。',
       en: 'A re-raise over a 4-bet, usually all-in at 100bb deep.',

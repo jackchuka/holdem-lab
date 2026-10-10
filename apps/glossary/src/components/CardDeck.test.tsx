@@ -73,6 +73,25 @@ describe('CardDeck', () => {
     expect(pos()).toBe('3 / 3');
   });
 
+  it('mounts the next card fresh so its answer never shows during the turn back', () => {
+    renderDeck();
+    fireEvent.click(card());
+    const before = card();
+    fireEvent.click(screen.getByRole('button', { name: '次へ' }));
+    expect(card()).not.toBe(before);
+    expect(card().className).not.toContain('is-flipped');
+  });
+
+  it('ignores arrow keys while inactive', () => {
+    render(
+      <I18nProvider value={createTranslator('ja')}>
+        <CardDeck cards={CARDS} active={false} />
+      </I18nProvider>,
+    );
+    fireEvent.keyDown(window, { key: 'ArrowRight' });
+    expect(pos()).toBe('1 / 3');
+  });
+
   it('moves with arrow keys but not while typing in an input', () => {
     renderDeck();
     fireEvent.keyDown(window, { key: 'ArrowRight' });

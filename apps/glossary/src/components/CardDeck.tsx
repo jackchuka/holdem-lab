@@ -5,7 +5,7 @@ import { CardView } from './CardView';
 
 const SWIPE_PX = 50;
 
-export function CardDeck({ cards }: { cards: DeckCard[] }) {
+export function CardDeck({ cards, active = true }: { cards: DeckCard[]; active?: boolean }) {
   const { t } = useI18n();
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -24,6 +24,7 @@ export function CardDeck({ cards }: { cards: DeckCard[] }) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (!active || e.altKey || e.metaKey || e.ctrlKey) return;
       const target = e.target as HTMLElement | null;
       if (target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) return;
       if (e.key === 'ArrowRight') move(1);
@@ -31,7 +32,7 @@ export function CardDeck({ cards }: { cards: DeckCard[] }) {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [move]);
+  }, [move, active]);
 
   if (total === 0) return <p className="empty">{t('list.empty')}</p>;
 
@@ -59,7 +60,8 @@ export function CardDeck({ cards }: { cards: DeckCard[] }) {
 
   return (
     <>
-      <CardView card={cards[index]} flipped={flipped} onFlip={onFlip} onPointerDown={onPointerDown} onPointerUp={onPointerUp} />
+      {/* A fresh card per index starts face up with no turn back, which would briefly show the next card's answer. */}
+      <CardView key={index} card={cards[index]} flipped={flipped} onFlip={onFlip} onPointerDown={onPointerDown} onPointerUp={onPointerUp} />
       <div className="deck-nav">
         <button type="button" onClick={() => move(-1)}>
           <span aria-hidden="true">← </span>

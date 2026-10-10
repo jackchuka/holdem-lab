@@ -32,3 +32,16 @@ test('links back to the holdem-lab home page', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('link', { name: 'holdem-lab' })).toHaveAttribute('href', 'http://localhost:5170/');
 });
+
+test('moves to the next card on a real touch swipe', async ({ page }) => {
+  await page.goto('/');
+  const box = (await page.getByTestId('card').boundingBox())!;
+  const y = box.y + box.height / 2;
+  const cdp = await page.context().newCDPSession(page);
+  const touch = (type: 'touchStart' | 'touchMove' | 'touchEnd', x: number) =>
+    cdp.send('Input.dispatchTouchEvent', { type, touchPoints: type === 'touchEnd' ? [] : [{ x, y }] });
+  await touch('touchStart', box.x + box.width - 30);
+  for (let i = 1; i <= 8; i++) await touch('touchMove', box.x + box.width - 30 - i * 25);
+  await touch('touchEnd', 0);
+  await expect(page.getByTestId('position')).toHaveText('2 / 100');
+});

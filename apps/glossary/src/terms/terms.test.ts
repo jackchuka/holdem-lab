@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { searchEntries } from '../search';
 import { CATEGORIES, ENTRIES } from './index';
 
 describe('term data', () => {
@@ -24,5 +25,11 @@ describe('term data', () => {
   it('puts every entry in a known category', () => {
     for (const e of ENTRIES) expect(CATEGORIES).toContain(e.category);
     expect(ENTRIES.some((e) => e.category === 'position')).toBe(true);
+  });
+
+  it('finds raises by their usual Japanese spelling', () => {
+    for (const [q, id] of [['3ベット', '3-bet'], ['4ベット', '4-bet'], ['5ベット', '5-bet']]) {
+      expect(searchEntries(ENTRIES, q).map((e) => e.term.id), q).toContain(id);
+    }
   });
 });

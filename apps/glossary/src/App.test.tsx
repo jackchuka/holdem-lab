@@ -47,6 +47,25 @@ describe('App', () => {
     expect(first).toBeTruthy();
   });
 
+  it('keeps the place in the deck when switching to the list and back', () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: '次へ' }));
+    fireEvent.click(screen.getByRole('tab', { name: '一覧' }));
+    fireEvent.click(screen.getByRole('tab', { name: 'カード' }));
+    expect(screen.getByTestId('position').textContent).toBe(`2 / ${ENTRIES.length}`);
+  });
+
+  it('does not move cards with arrow keys on the list tab or behind the settings sheet', () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole('tab', { name: '一覧' }));
+    fireEvent.keyDown(window, { key: 'ArrowRight' });
+    fireEvent.click(screen.getByRole('tab', { name: 'カード' }));
+    fireEvent.click(screen.getByRole('button', { name: '設定' }));
+    fireEvent.keyDown(window, { key: 'ArrowRight' });
+    fireEvent.click(screen.getByRole('button', { name: '閉じる' }));
+    expect(screen.getByTestId('position').textContent).toBe(`1 / ${ENTRIES.length}`);
+  });
+
   it('switches the UI language', () => {
     render(<App />);
     fireEvent.click(screen.getByRole('button', { name: '設定' }));

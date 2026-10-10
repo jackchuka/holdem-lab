@@ -7,8 +7,8 @@ export const MATH: Term[] = [
     ja: 'ポットオッズ',
     kana: 'ぽっとおっず',
     def: {
-      ja: 'コールに必要な額と、コールした後のポットの比率。コールに必要な勝率の目安になる。',
-      en: 'The ratio of the call to the pot after calling, which gives the equity a call needs.',
+      ja: '今のポットの額と、コールに必要な額の比率。ここからコールに必要な勝率が分かる。',
+      en: 'The ratio of the current pot to the cost of calling, which tells you the equity a call needs.',
     },
     example: { en: 'A half-pot bet gives you 3-to-1 pot odds.', ja: 'ポットの半分のベットなら、ポットオッズは3対1だ。' },
   },

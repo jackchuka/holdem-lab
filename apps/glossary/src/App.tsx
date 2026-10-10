@@ -45,11 +45,11 @@ export function App() {
         </header>
         <CategoryChips value={filter} onChange={setFilter} />
         <main className="main" role="tabpanel" aria-label={t(`tabs.${tab}`)}>
-          {tab === 'cards' ? (
-            <CardDeck key={`${filter}:${settings.direction}`} cards={deck} />
-          ) : (
-            <TermList entries={entries} showCategory={filter === 'all'} />
-          )}
+          {/* The deck stays mounted on the list tab so looking up a word keeps the place in it. */}
+          <div className="deck" hidden={tab !== 'cards'}>
+            <CardDeck key={`${filter}:${settings.direction}`} cards={deck} active={tab === 'cards' && !sheet} />
+          </div>
+          {tab === 'list' && <TermList entries={entries} showCategory={filter === 'all'} />}
         </main>
         <nav className="tabbar" role="tablist" aria-label={t('tabs.label')}>
           {TABS.map((x) => (

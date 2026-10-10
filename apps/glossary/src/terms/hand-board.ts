@@ -225,8 +225,8 @@ export const HAND_BOARD: Term[] = [
     ja: 'レインボー',
     kana: 'れいんぼー',
     def: {
-      ja: 'フロップの3枚がすべて違うスートであること。フラッシュドローができない。',
-      en: 'A flop with three different suits, so no flush draw is possible.',
+      ja: 'フロップの3枚がすべて違うスートであること。フロップの時点ではフラッシュドローがない。',
+      en: 'A flop with three different suits, so nobody has a flush draw on the flop.',
     },
     example: { en: 'A rainbow flop favors the preflop raiser.', ja: 'レインボーのフロップはプリフロップのレイザーに有利だ。' },
   },
