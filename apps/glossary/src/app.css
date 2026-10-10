@@ -1,0 +1,82 @@
+html, body, #root { margin: 0; height: 100%; }
+body {
+  background-color: var(--bg-solid);
+  background-image: var(--bg);
+  background-attachment: fixed;
+  color: var(--fg);
+  font-family: -apple-system, system-ui, 'Hiragino Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.app { max-width: 480px; height: 100%; margin: 0 auto; padding: calc(12px + env(safe-area-inset-top)) 16px 0; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; }
+.app-header { display: flex; align-items: center; gap: 10px; }
+.app-header img { width: 32px; height: 32px; border-radius: 8px; }
+.app-header h1 { font-size: 18px; font-weight: 800; margin: 0; }
+.spacer { flex: 1; }
+.icon-button { background: none; border: 0; font-size: 20px; padding: 4px 8px; color: var(--muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--btn-border); background: transparent; font-size: 13px; white-space: nowrap; }
+.chip[aria-pressed='true'] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); font-weight: 700; }
+.categories { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
+.categories::-webkit-scrollbar { display: none; }
+
+.main { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
+
+/* Card: both faces are always rendered so the 3D turn has something to show. */
+.flip { flex: 1; min-height: 0; perspective: 1200px; padding: 0; border: 0; background: none; text-align: inherit; touch-action: pan-y; }
+.flipper { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.45s cubic-bezier(0.3, 0.7, 0.3, 1); }
+.flip.is-flipped .flipper { transform: rotateY(180deg); }
+.face { position: absolute; inset: 0; box-sizing: border-box; overflow-y: auto; backface-visibility: hidden; border-radius: 18px; background: var(--card-bg); color: #1a1a1a; padding: 22px 18px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); display: flex; flex-direction: column; }
+.face-front { justify-content: center; align-items: center; text-align: center; }
+.face-back { transform: rotateY(180deg); gap: 10px; }
+@media (prefers-reduced-motion: reduce) { .flipper { transition: none; } }
+.face .cat { font-size: 11px; letter-spacing: 0.08em; color: #8a7f63; }
+.face .term { font-size: 34px; font-weight: 800; margin: 10px 0 0; overflow-wrap: anywhere; }
+.face .hint { margin-top: 18px; font-size: 11px; color: #a39a83; }
+.face .asked { font-size: 12px; color: #8a7f63; }
+.face .answer { font-size: 26px; font-weight: 800; margin: 0; overflow-wrap: anywhere; }
+.face .kana { font-size: 12px; color: #8a7f63; margin-top: -6px; }
+.face .def { font-size: 15px; line-height: 1.6; margin: 4px 0 0; }
+.example { display: block; margin-top: auto; padding: 10px 12px; border-radius: 10px; background: #efe7d2; font-size: 13px; line-height: 1.5; }
+.example .ex-en { display: block; font-style: italic; }
+.example .ex-ja { display: block; color: #5d5647; font-size: 12px; margin-top: 2px; }
+
+.deck-nav { display: flex; align-items: center; gap: 10px; }
+.deck-nav button { flex: 1; height: 44px; border-radius: 12px; border: 0; background: var(--btn); font-size: 15px; }
+.deck-nav .pos { min-width: 64px; text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; font-size: 13px; }
+
+.search { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--btn-border); }
+.search input { flex: 1; min-width: 0; border: 0; background: none; color: var(--fg); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.term-list { flex: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0; list-style: none; }
+.letter { position: sticky; top: 0; z-index: 1; padding: 4px 16px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); background: var(--bg-solid); }
+.row { border-bottom: 1px solid var(--btn-border); }
+.row > button { width: 100%; display: flex; align-items: baseline; gap: 10px; padding: 11px 16px; background: none; border: 0; text-align: left; }
+.row .row-en { flex: none; white-space: nowrap; font-weight: 700; }
+.row .row-ja { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: 13px; }
+.row .tag { flex: none; margin-left: auto; font-size: 10px; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--btn-border); color: var(--muted); }
+.row .chev { flex: none; color: var(--muted); font-size: 12px; }
+.row .tag + .chev { margin-left: 0; }
+.row .row-ja + .chev { margin-left: auto; }
+.row.open { background: var(--surface); }
+.row.open .chev { transform: rotate(90deg); }
+.row .detail { padding: 0 16px 12px; font-size: 14px; line-height: 1.55; display: flex; flex-direction: column; gap: 8px; }
+.row .detail .example { background: var(--surface); color: var(--fg); }
+.row .detail .example .ex-ja { color: var(--muted); }
+.empty { color: var(--muted); text-align: center; padding: 24px 0; }
+
+.tabbar { display: flex; margin: 0 -16px; border-top: 1px solid var(--btn-border); padding: 4px 16px calc(8px + env(safe-area-inset-bottom)); }
+.tabbar button { flex: 1; background: none; border: 0; padding: 8px 0; color: var(--muted); font-size: 13px; }
+.tabbar button[aria-selected='true'] { color: var(--accent); font-weight: 700; }
+
+.sheet-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.35); display: flex; align-items: flex-end; justify-content: center; z-index: 10; }
+.sheet { width: 100%; max-width: 480px; max-height: 88dvh; overflow-y: auto; box-sizing: border-box; padding: 12px 14px calc(16px + env(safe-area-inset-bottom)); border-radius: 18px 18px 0 0; background: var(--panel); color: var(--panel-fg); }
+.sheet .chip { border-color: color-mix(in srgb, var(--panel-fg) 20%, transparent); }
+.sheet-head { display: flex; align-items: center; margin-bottom: 8px; }
+.sheet-title { flex: 1; font-weight: 800; }
+.sheet-close { background: none; border: 0; font-size: 22px; line-height: 1; padding: 0 4px; }
+.editor { display: flex; flex-direction: column; gap: 10px; }
+.setting { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 6px 0; font-size: 14px; }
