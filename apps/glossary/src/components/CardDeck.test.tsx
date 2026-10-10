@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { DeckCard } from '../deck';
 import { I18nProvider, createTranslator } from '../i18n/i18n';
 import type { Term } from '../terms';
@@ -133,5 +133,60 @@ describe('CardDeck', () => {
     renderDeck([]);
     expect(screen.queryByTestId('card')).toBeNull();
     expect(screen.getByText('見つかりません')).toBeTruthy();
+  });
+
+  describe('slide animation', () => {
+    const slide = () => screen.getByTestId('card-slide');
+    // jsdom has no matchMedia; stubbing it opts the deck into animations.
+    const allowMotion = () =>
+      vi.stubGlobal('matchMedia', (q: string) => ({ matches: false, media: q, addEventListener() {}, removeEventListener() {} }));
+    afterEach(() => vi.unstubAllGlobals());
+
+    it('follows the finger while dragging and springs back below the threshold', () => {
+      renderDeck();
+      fireEvent.pointerDown(card(), { clientX: 200, clientY: 300 });
+      fireEvent.pointerMove(card(), { clientX: 170, clientY: 302 });
+      expect(slide().style.transform).toContain('translateX(-30px)');
+      expect(slide().style.transform).not.toContain('rotate');
+      fireEvent.pointerUp(card(), { clientX: 170, clientY: 302 });
+      expect(slide().style.transform).toContain('translateX(0px)');
+      expect(pos()).toBe('1 / 3');
+    });
+
+    it('ignores mostly vertical drags', () => {
+      renderDeck();
+      fireEvent.pointerDown(card(), { clientX: 200, clientY: 300 });
+      fireEvent.pointerMove(card(), { clientX: 190, clientY: 360 });
+      expect(slide().style.transform).toContain('translateX(0px)');
+    });
+
+    it('slides the card out, swaps it, and slides the next one in', () => {
+      allowMotion();
+      renderDeck();
+      fireEvent.click(screen.getByRole('button', { name: '次へ' }));
+      expect(pos()).toBe('1 / 3');
+      expect(slide().style.transform).toContain('translateX(-120%)');
+      expect(slide().style.transform).not.toContain('rotate');
+      fireEvent.transitionEnd(slide());
+      expect(pos()).toBe('2 / 3');
+      expect(front().textContent).toContain('ナッツ');
+      expect(slide().style.transform).toContain('translateX(0px)');
+    });
+
+    it('slides the other way for the previous card', () => {
+      allowMotion();
+      renderDeck();
+      fireEvent.click(screen.getByRole('button', { name: '前へ' }));
+      expect(slide().style.transform).toContain('translateX(120%)');
+      fireEvent.transitionEnd(slide());
+      expect(pos()).toBe('3 / 3');
+    });
+
+    it('moves at once when the user prefers reduced motion', () => {
+      vi.stubGlobal('matchMedia', (q: string) => ({ matches: true, media: q, addEventListener() {}, removeEventListener() {} }));
+      renderDeck();
+      fireEvent.click(screen.getByRole('button', { name: '次へ' }));
+      expect(pos()).toBe('2 / 3');
+    });
   });
 });

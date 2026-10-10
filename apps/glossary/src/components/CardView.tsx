@@ -8,10 +8,12 @@ type Props = {
   flipped: boolean;
   onFlip: () => void;
   onPointerDown?: PointerEventHandler;
+  onPointerMove?: PointerEventHandler;
   onPointerUp?: PointerEventHandler;
+  onPointerCancel?: PointerEventHandler;
 };
 
-export function CardView({ card, flipped, onFlip, onPointerDown, onPointerUp }: Props) {
+export function CardView({ card, flipped, onFlip, onPointerDown, onPointerMove, onPointerUp, onPointerCancel }: Props) {
   const { t, locale } = useI18n();
   const { term, category } = card.entry;
   const enFirst = card.direction === 'en-ja';
@@ -24,7 +26,9 @@ export function CardView({ card, flipped, onFlip, onPointerDown, onPointerUp }: 
       className={flipped ? 'flip is-flipped' : 'flip'}
       onClick={onFlip}
       onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
     >
       <span className="flipper">
         <span className="face face-front" data-testid="card-front" aria-hidden={flipped}>
