@@ -15,6 +15,13 @@ export const APPS = [
     },
   },
   {
+    id: 'glossary', title: 'Glossary', ja: 'ポーカー用語の英日単語帳', en: 'Poker glossary flashcards', devPort: 5177, shot: 'glossary-cards.png',
+    lead: {
+      ja: '3bet や SPR など約100のポーカー用語を、めくるカードと検索できる一覧で覚える。英語と日本語の対応、意味、例文つき。',
+      en: 'About 100 poker terms, from 3-bet to SPR, on flip cards and in a searchable list, each with its Japanese name, a definition and an example.',
+    },
+  },
+  {
     id: 'equity', title: 'Equity', ja: 'ハンドとレンジの勝率計算機', en: 'Hand and range equity calculator', devPort: 5174, shot: 'equity-main.png',
     lead: {
       ja: '2〜9人のハンドとレンジから勝率をその場で計算する。次のカードごとの勝率の増減や、レンジ内のハンドごとの勝率も見られる。',

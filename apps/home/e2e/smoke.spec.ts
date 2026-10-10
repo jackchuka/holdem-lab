@@ -75,7 +75,7 @@ test.describe('without JavaScript', () => {
 
   test('lists every app with links and no dead controls @desktop', async ({ page }) => {
     await page.goto('/');
-    for (const id of ['fortune', 'flashcards', 'equity', 'chips']) {
+    for (const id of ['fortune', 'flashcards', 'glossary', 'equity', 'chips']) {
       await expect(page.locator(`#app-${id} h2 a`)).toBeVisible();
     }
     await expect(page.locator('#tabs')).toBeHidden();
