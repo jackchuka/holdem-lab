@@ -213,8 +213,8 @@ importers:
         specifier: ^16.3.3
         version: 16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@types/node':
-        specifier: ^24.0.0
-        version: 24.19.0
+        specifier: ^25.9.9
+        version: 25.9.9
       '@types/react':
         specifier: ^19.3.0
         version: 19.3.0
@@ -226,16 +226,16 @@ importers:
         version: 0.186.0
       '@vitejs/plugin-react':
         specifier: ^6.1.2
-        version: 6.1.2(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))
+        version: 6.1.2(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))
       jsdom:
         specifier: ^30.1.2
         version: 30.1.2
       vite:
         specifier: ^8.3.4
-        version: 8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
+        version: 8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)
       vite-plugin-pwa:
         specifier: ^2.0.0
-        version: 2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@24.19.0))(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1)
+        version: 2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@25.9.9))(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1)
 
   apps/equity:
     dependencies:
@@ -265,8 +265,8 @@ importers:
         specifier: ^16.3.3
         version: 16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@types/node':
-        specifier: ^24.0.0
-        version: 24.19.0
+        specifier: ^25.9.9
+        version: 25.9.9
       '@types/react':
         specifier: ^19.3.0
         version: 19.3.0
@@ -275,16 +275,16 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
         specifier: ^6.1.2
-        version: 6.1.2(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))
+        version: 6.1.2(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))
       jsdom:
         specifier: ^30.1.2
         version: 30.1.2
       vite:
         specifier: ^8.3.4
-        version: 8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
+        version: 8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)
       vite-plugin-pwa:
         specifier: ^2.0.0
-        version: 2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@24.19.0))(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1)
+        version: 2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@25.9.9))(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1)
 
   apps/flashcards:
     dependencies:
@@ -320,8 +320,8 @@ importers:
         specifier: ^16.3.3
         version: 16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@types/node':
-        specifier: ^24.0.0
-        version: 24.19.0
+        specifier: ^25.9.9
+        version: 25.9.9
       '@types/react':
         specifier: ^19.3.0
         version: 19.3.0
@@ -330,7 +330,7 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
         specifier: ^6.1.2
-        version: 6.1.2(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))
+        version: 6.1.2(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))
       fake-indexeddb:
         specifier: ^6.2.5
         version: 6.2.5
@@ -339,10 +339,10 @@ importers:
         version: 30.1.2
       vite:
         specifier: ^8.3.4
-        version: 8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
+        version: 8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)
       vite-plugin-pwa:
         specifier: ^2.0.0
-        version: 2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@24.19.0))(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1)
+        version: 2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@25.9.9))(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1)
 
   apps/fortune:
     dependencies:
@@ -369,8 +369,8 @@ importers:
         specifier: ^16.3.3
         version: 16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@types/node':
-        specifier: ^24.0.0
-        version: 24.19.0
+        specifier: ^25.9.9
+        version: 25.9.9
       '@types/react':
         specifier: ^19.3.0
         version: 19.3.0
@@ -379,19 +379,19 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
         specifier: ^6.1.2
-        version: 6.1.2(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))
+        version: 6.1.2(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))
       jsdom:
         specifier: ^30.1.2
         version: 30.1.2
       sharp:
         specifier: ^0.35.5
-        version: 0.35.5(@types/node@24.19.0)
+        version: 0.35.5(@types/node@25.9.9)
       vite:
         specifier: ^8.3.4
-        version: 8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
+        version: 8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)
       vite-plugin-pwa:
         specifier: ^2.0.0
-        version: 2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@24.19.0))(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1)
+        version: 2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@25.9.9))(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1)
 
   apps/glossary:
     dependencies:
@@ -415,8 +415,8 @@ importers:
         specifier: ^16.3.3
         version: 16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@types/node':
-        specifier: ^24.0.0
-        version: 24.19.0
+        specifier: ^25.9.9
+        version: 25.9.9
       '@types/react':
         specifier: ^19.3.0
         version: 19.3.0
@@ -425,16 +425,16 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
         specifier: ^6.1.2
-        version: 6.1.2(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))
+        version: 6.1.2(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))
       jsdom:
         specifier: ^30.1.2
         version: 30.1.2
       vite:
         specifier: ^8.3.4
-        version: 8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
+        version: 8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)
       vite-plugin-pwa:
         specifier: ^2.0.0
-        version: 2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@24.19.0))(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1)
+        version: 2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@25.9.9))(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1)
 
   apps/home:
     dependencies:
@@ -449,17 +449,17 @@ importers:
         specifier: workspace:*
         version: link:../../packages/assets
       '@types/node':
-        specifier: ^24.0.0
-        version: 24.19.0
+        specifier: ^25.9.9
+        version: 25.9.9
       jsdom:
         specifier: ^30.1.2
         version: 30.1.2
       sharp:
         specifier: ^0.35.5
-        version: 0.35.5(@types/node@24.19.0)
+        version: 0.35.5(@types/node@25.9.9)
       vite:
         specifier: ^8.3.4
-        version: 8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
+        version: 8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)
 
   packages/assets: {}
 
@@ -1797,6 +1797,9 @@ packages:
 
   '@types/node@24.19.0':
     resolution: {integrity: sha512-zY+5tKxXdhGh1PYI0ac+7juvEu4OI6vWtVVoj5i2m42jxAY1U+zHGt6QCyOFwykdP62sM3MJ9stoYYUw5aCWew==}
+
+  '@types/node@25.9.9':
+    resolution: {integrity: sha512-b4e2xxj/yMeT2hNlD6x7zNFiQK2Dlmkb9CQ6v3/1G2RezKN4YS2lcEv8lzGm1mhs4f2lM4yNAMI/zUDBZBBt7w==}
 
   '@types/react-dom@19.3.0':
     resolution: {integrity: sha512-ZI7bU42mZXXKHn/qNLEw2IrbiINU7X5+vfgdixBHkCNpYWXjKgfQ/P+uyGb5CjOLB9UcnTeg3rylQtV2hym44Q==}
@@ -4531,6 +4534,11 @@ snapshots:
   '@types/node@24.19.0':
     dependencies:
       undici-types: 7.24.6
+    optional: true
+
+  '@types/node@25.9.9':
+    dependencies:
+      undici-types: 7.24.6
 
   '@types/react-dom@19.3.0(@types/react@19.3.0)':
     dependencies:
@@ -4632,10 +4640,27 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
+  '@vite-pwa/assets-generator@2.0.0(@types/node@25.9.9)':
+    dependencies:
+      cac: 7.0.0
+      consola: 3.4.2
+      picocolors: 1.1.1
+      sharp: 0.35.5(@types/node@25.9.9)
+      sharp-ico: 0.1.5(@types/node@25.9.9)
+      unconfig: 7.5.0
+    transitivePeerDependencies:
+      - '@types/node'
+    optional: true
+
   '@vitejs/plugin-react@6.1.2(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       vite: 8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
+
+  '@vitejs/plugin-react@6.1.2(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))':
+    dependencies:
+      '@rolldown/pluginutils': 1.0.1
+      vite: 8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)
 
   '@vitest/mocker@5.0.3(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))':
     dependencies:
@@ -5673,6 +5698,15 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
+  sharp-ico@0.1.5(@types/node@25.9.9):
+    dependencies:
+      decode-ico: 0.4.1
+      ico-endec: 0.1.6
+      sharp: 0.35.5(@types/node@25.9.9)
+    transitivePeerDependencies:
+      - '@types/node'
+    optional: true
+
   sharp@0.35.5(@types/node@24.19.0):
     dependencies:
       '@img/colour': 1.1.0
@@ -5705,6 +5739,39 @@ snapshots:
       '@img/sharp-win32-ia32': 0.35.5
       '@img/sharp-win32-x64': 0.35.5
       '@types/node': 24.19.0
+
+  sharp@0.35.5(@types/node@25.9.9):
+    dependencies:
+      '@img/colour': 1.1.0
+      detect-libc: 2.1.2
+      semver: 7.8.5
+    optionalDependencies:
+      '@img/sharp-darwin-arm64': 0.35.5
+      '@img/sharp-darwin-x64': 0.35.5
+      '@img/sharp-freebsd-wasm32': 0.35.5
+      '@img/sharp-libvips-darwin-arm64': 1.3.4
+      '@img/sharp-libvips-darwin-x64': 1.3.4
+      '@img/sharp-libvips-linux-arm': 1.3.4
+      '@img/sharp-libvips-linux-arm64': 1.3.4
+      '@img/sharp-libvips-linux-ppc64': 1.3.4
+      '@img/sharp-libvips-linux-riscv64': 1.3.4
+      '@img/sharp-libvips-linux-s390x': 1.3.4
+      '@img/sharp-libvips-linux-x64': 1.3.4
+      '@img/sharp-libvips-linuxmusl-arm64': 1.3.4
+      '@img/sharp-libvips-linuxmusl-x64': 1.3.4
+      '@img/sharp-linux-arm': 0.35.5
+      '@img/sharp-linux-arm64': 0.35.5
+      '@img/sharp-linux-ppc64': 0.35.5
+      '@img/sharp-linux-riscv64': 0.35.5
+      '@img/sharp-linux-s390x': 0.35.5
+      '@img/sharp-linux-x64': 0.35.5
+      '@img/sharp-linuxmusl-arm64': 0.35.5
+      '@img/sharp-linuxmusl-x64': 0.35.5
+      '@img/sharp-webcontainers-wasm32': 0.35.5
+      '@img/sharp-win32-arm64': 0.35.5
+      '@img/sharp-win32-ia32': 0.35.5
+      '@img/sharp-win32-x64': 0.35.5
+      '@types/node': 25.9.9
 
   shebang-command@2.0.0:
     dependencies:
@@ -5974,16 +6041,16 @@ snapshots:
     dependencies:
       react: 19.3.0
 
-  vite-plugin-pwa@2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@24.19.0))(vite@8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1):
+  vite-plugin-pwa@2.0.0(@vite-pwa/assets-generator@2.0.0(@types/node@25.9.9))(vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2))(workbox-build@7.4.1)(workbox-window@7.4.1):
     dependencies:
       debug: 4.4.3
       pretty-bytes: 6.1.1
       tinyglobby: 0.2.17
-      vite: 8.3.4(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
+      vite: 8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)
       workbox-build: 7.4.1
       workbox-window: 7.4.1
     optionalDependencies:
-      '@vite-pwa/assets-generator': 2.0.0(@types/node@24.19.0)
+      '@vite-pwa/assets-generator': 2.0.0(@types/node@25.9.9)
     transitivePeerDependencies:
       - supports-color
 
@@ -5996,6 +6063,19 @@ snapshots:
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 24.19.0
+      fsevents: 2.3.3
+      jiti: 2.7.0
+      terser: 5.51.2
+
+  vite@8.3.4(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2):
+    dependencies:
+      lightningcss: 1.33.0
+      picomatch: 4.0.7
+      postcss: 8.5.29
+      rolldown: 1.2.13
+      tinyglobby: 0.2.17
+    optionalDependencies:
+      '@types/node': 25.9.9
       fsevents: 2.3.3
       jiti: 2.7.0
       terser: 5.51.2
