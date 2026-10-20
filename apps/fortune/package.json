@@ -18,8 +18,8 @@
     "@holdem-lab/engine": "workspace:*",
     "@holdem-lab/quiz": "workspace:*",
     "@holdem-lab/ui": "workspace:*",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@holdem-lab/assets": "workspace:*",
