@@ -17,7 +17,7 @@
     "@holdem-lab/quiz": "workspace:*",
     "@holdem-lab/ranges": "workspace:*",
     "@holdem-lab/ui": "workspace:*",
-    "dexie": "^4.4.6",
+    "dexie": "^4.4.7",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "ts-fsrs": "^5.4.2"
