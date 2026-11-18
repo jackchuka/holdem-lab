@@ -228,8 +228,8 @@ importers:
         specifier: ^6.2.1
         version: 6.2.1(vite@8.3.6(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))
       jsdom:
-        specifier: ^31.0.0
-        version: 31.0.0
+        specifier: ^31.0.1
+        version: 31.0.1
       vite:
         specifier: ^8.3.6
         version: 8.3.6(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
@@ -277,8 +277,8 @@ importers:
         specifier: ^6.2.1
         version: 6.2.1(vite@8.3.6(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))
       jsdom:
-        specifier: ^31.0.0
-        version: 31.0.0
+        specifier: ^31.0.1
+        version: 31.0.1
       vite:
         specifier: ^8.3.6
         version: 8.3.6(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
@@ -335,8 +335,8 @@ importers:
         specifier: ^6.2.8
         version: 6.2.8
       jsdom:
-        specifier: ^31.0.0
-        version: 31.0.0
+        specifier: ^31.0.1
+        version: 31.0.1
       vite:
         specifier: ^8.3.6
         version: 8.3.6(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
@@ -381,8 +381,8 @@ importers:
         specifier: ^6.2.1
         version: 6.2.1(vite@8.3.6(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))
       jsdom:
-        specifier: ^31.0.0
-        version: 31.0.0
+        specifier: ^31.0.1
+        version: 31.0.1
       sharp:
         specifier: ^0.35.5
         version: 0.35.5(@types/node@24.19.0)
@@ -427,8 +427,8 @@ importers:
         specifier: ^6.2.1
         version: 6.2.1(vite@8.3.6(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))
       jsdom:
-        specifier: ^31.0.0
-        version: 31.0.0
+        specifier: ^31.0.1
+        version: 31.0.1
       vite:
         specifier: ^8.3.6
         version: 8.3.6(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2)
@@ -452,8 +452,8 @@ importers:
         specifier: ^24.0.0
         version: 24.19.0
       jsdom:
-        specifier: ^31.0.0
-        version: 31.0.0
+        specifier: ^31.0.1
+        version: 31.0.1
       sharp:
         specifier: ^0.35.5
         version: 0.35.5(@types/node@24.19.0)
@@ -504,8 +504,8 @@ importers:
         specifier: ^6.2.1
         version: 6.2.1(vite@8.3.6(@types/node@24.19.0)(jiti@2.7.0)(terser@5.51.2))
       jsdom:
-        specifier: ^31.0.0
-        version: 31.0.0
+        specifier: ^31.0.1
+        version: 31.0.1
       react:
         specifier: ^19.3.1
         version: 19.3.1
@@ -2221,10 +2221,6 @@ packages:
   electron-to-chromium@1.5.439:
     resolution: {integrity: sha512-qu6QIPXhsb+CRcAiTMNjR4A1y/7tCYKkKjr5CZXRVih6qkDf79peZ2BpEU3qoDBNCRrcy3Mra3X9nG5oruuA7Q==}
 
-  entities@8.1.0:
-    resolution: {integrity: sha512-kxL7msIffSuh9aaFAMD7rxAIuTRMAHMeBtgHW2yUdWw732ZNh4MehkF2gdjvtdmikkaIP9bFDDJOPlsvm7avrA==}
-    engines: {node: '>=20.19.0'}
-
   entities@9.0.0:
     resolution: {integrity: sha512-oJFNDJg3kTPwAD1cNn2+WmUq4wFoo09npc3Ydf1D7ED4smRiWrsKnaLxykrTWgyGEcusc87P5dxlAleol9kpkg==}
     engines: {node: '>=20.19.0'}
@@ -2572,8 +2568,8 @@ packages:
       canvas:
         optional: true
 
-  jsdom@31.0.0:
-    resolution: {integrity: sha512-xAkhD9z1eyFC5+QUi9K24CaZJgdCQ2GOGLW1GdVDoQvkp/AxEH9TQ0pAplPOlIiV92hfcgnFOADZypbjgbBT6Q==}
+  jsdom@31.0.1:
+    resolution: {integrity: sha512-CbhJL8ZQg3eKswxSZth4QO9tW0jPIhmR0vtSXQSbKSfWbwIT6hoRc17wdHIVTQ43KI0mdV5iTJr3281IDgVZ5g==}
     engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
     peerDependencies:
       '@napi-rs/canvas': ^1.0.13
@@ -2775,9 +2771,6 @@ packages:
 
   parse5-parser-stream@8.1.0:
     resolution: {integrity: sha512-58MPfNTA+DsIzro41rU94xghnu/h2N4yEPdPdGPlZVHM/QvA5jlVGYVo7IzlHbFLHYx3cZUnr9s9HBrA0tEYyw==}
-
-  parse5@8.0.1:
-    resolution: {integrity: sha512-z1e/HMG90obSGeidlli3hj7cbocou0/wa5HacvI3ASx34PecNjNQeaHNo5WIZpWofN9kgkqV1q5YvXe3F0FoPw==}
 
   parse5@8.1.0:
     resolution: {integrity: sha512-sq3qBFpee5jeocbFbO48VHlGr8sT7mbXS0vxlKN6sottBtJzrOG3998sr0llSZcQAGgfpdmEYAIZE0P9z0dE8w==}
@@ -4938,8 +4931,6 @@ snapshots:
 
   electron-to-chromium@1.5.439: {}
 
-  entities@8.1.0: {}
-
   entities@9.0.0: {}
 
   es-abstract-get@1.0.0:
@@ -5359,7 +5350,7 @@ snapshots:
       - '@noble/hashes'
     optional: true
 
-  jsdom@31.0.0:
+  jsdom@31.0.1:
     dependencies:
       '@exodus/bytes': 1.16.0
       bcp-47: 2.1.2
@@ -5546,11 +5537,7 @@ snapshots:
 
   parse5-parser-stream@8.1.0:
     dependencies:
-      parse5: 8.0.1
-
-  parse5@8.0.1:
-    dependencies:
-      entities: 8.1.0
+      parse5: 8.1.0
 
   parse5@8.1.0:
     dependencies:
